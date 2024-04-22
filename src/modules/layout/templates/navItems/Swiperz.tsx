@@ -24,7 +24,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
     return (
         <>
         <Swiper
-            className={classAdded + "Sswiper  mt-10  small:max-lg:!h-[10rem] 2xsmall:max-small:!w-[30rem]"}
+            className={classAdded + "Sswiper  mt-10  small:max-lg:!h-[10rem] 2xsmall:max-small:!w-full"}
             spaceBetween={100}
             autoplay={{
 
