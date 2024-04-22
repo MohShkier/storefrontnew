@@ -13,31 +13,11 @@ import { Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "../../../products/components/thumbnail"
 import PreviewPrice from "../../../products/components/product-preview/price"
+import { ProductCollectionWithPreviews, ProductPreviewType  } from "types/global"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
-
-interface PriceType {
-  calculated_price: string | null;
-  original_price: string | null;
-  difference: string | null;
-  price_type: "default" | "sale" | null;
-}
-
-interface ProductPreviewType {
-  id: string;
-  title: string;
-  handle: string | null;
-  thumbnail: string | null;
-  price: PriceType | undefined; // Adjust to allow for undefined values
-}
-
-interface ProductCollectionWithPreviews {
-  id: string;
-  title: string;
-  products: ProductPreviewType[];
-}
 
 interface Swiperz2Props {
   classAdded: string;
