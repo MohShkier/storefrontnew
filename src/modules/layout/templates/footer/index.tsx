@@ -115,12 +115,7 @@ export default async function Footer() {
 
       <div className="text-sm text-gray-600 text-center py-5">
         © {new Date().getFullYear()} Almohtaref Store. All rights reserved.
-        <Image
-        src="/download.jpeg"
-        alt="Description of your image"
-        width={500} // Optional: Adjust width as needed
-        height={300} // Optional: Adjust height as needed
-      />      </div>
+        </div>
     </footer>
 
 
