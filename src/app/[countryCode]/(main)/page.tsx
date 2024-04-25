@@ -11,7 +11,6 @@ import { useProductCategory } from "medusa-react"
 import Swiperz from "@modules/layout/templates/navItems/Swiperz"
 import Swiperz2 from "@modules/layout/templates/nav/Swiperz2"
 import Image from 'next/image';
-import myImage from "../../../../../almohtaref-mobile/uploads/1705936120_0d1772b28c769aedcc47.jpg"
 export const metadata: Metadata = {
   title: "Almohtaref Mobile",
   description:
@@ -69,7 +68,6 @@ export default async function Home({
   const region = await getRegion(countryCode)
   const categories = await getCategoriesList
   const { product_categories } = await getCategoriesList()
-
   if (!collections || !region) {
     return null
   }
@@ -82,7 +80,9 @@ export default async function Home({
       <div className="py-12">
   
 <Swiperz2 classAdded="" itemsArray={filteredCollections}/>
+
         <ul className="flex flex-col gap-x-6">
+          
           <FeaturedProducts collections={collections} region={region} />
         </ul>
 

@@ -115,7 +115,7 @@ export default async function Footer() {
 
       <div className="text-sm text-gray-600 text-center py-5">
         © {new Date().getFullYear()} Almohtaref Store. All rights reserved.
-         </div>
+    </div>
     </footer>
 
 

@@ -12,7 +12,7 @@ import SwiperCore from "swiper"
 import "./styles.css"
 import   { Navigation, Autoplay, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import Image from "next/image"
-import myImage from "../../../../../../almohtaref-mobile/uploads/1705936120_0d1772b28c769aedcc47.jpg"
+import myImage from "../../../../app/swiperImage.jpg"
 
 SwiperCore.use([Navigation, Autoplay, Pagination, Scrollbar, A11y]);
 
@@ -24,7 +24,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
     return (
         <>
         <Swiper
-            className={classAdded + "Sswiper  mt-10  small:max-lg:!h-[10rem] 2xsmall:max-small:!w-[30rem]"}
+            className={classAdded + "Sswiper  mt-10   2xsmall:max-small:!w-full"}
             spaceBetween={100}
             autoplay={{
 
@@ -40,7 +40,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
         <Image
           alt=""
           className='SwiperSliderImg'
-          src="https://i.ibb.co/6ZLwHnh/slider1.jpg"
+          src={myImage}
           width={500}
           height={500}
           loader={({ src }) => src}
@@ -50,8 +50,8 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
         <Image
           alt=""
           className='SwiperSliderImg'
-          src="https://i.ibb.co/6ZLwHnh/slider2.jpg"
-          width={500}
+          src={myImage}
+           width={500}
           height={500}
           loader={({ src }) => src}
         />
@@ -60,8 +60,8 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
         <Image
           alt=""
           className='SwiperSliderImg'
-          src="https://i.ibb.co/6ZLwHnh/slider3.jpg"
-          width={500}
+          src={myImage}
+                    width={500}
           height={500}
           loader={({ src }) => src}
         />
@@ -70,8 +70,8 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
         <Image
           alt=""
           className='SwiperSliderImg'
-          src="https://i.ibb.co/6ZLwHnh/slider3.jpg"
-          width={500}
+          src={myImage}
+                    width={500}
           height={500}
           loader={({ src }) => src}
         />
