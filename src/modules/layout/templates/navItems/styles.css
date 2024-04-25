@@ -40,8 +40,27 @@
 }
 
 
-
-
+.swiper-pagination {
+    position: absolute;
+    
+    display: flex;
+    justify-content: center !important;
+    bottom: 10px;
+    z-index: 10; /* Ensure pagination is above the slides */
+  }
+  
+  .swiper-pagination-bullet {
+    background-color: #ff0000; /* Change the background color of pagination dots */
+    width: 10px; /* Set the width of pagination dots */
+    height: 10px; /* Set the height of pagination dots */
+    margin: 0 5px; /* Adjust the space between pagination dots */
+    border-radius: 50%; /* Make pagination dots circular */
+  }
+  
+  /* Customize the color of active pagination dot */
+  .swiper-pagination-bullet-active {
+    background-color: orangered; /* Change the background color of active pagination dot */
+  }
 
 
 
