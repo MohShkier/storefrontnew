@@ -81,7 +81,7 @@ export default async function Home({
   
 <Swiperz2 classAdded="" itemsArray={filteredCollections}/>
 
-        <ul className="flex flex-col gap-x-6">
+        <ul className="flex flex-col gap-x-6 test"  >
           
           <FeaturedProducts collections={collections} region={region} />
         </ul>

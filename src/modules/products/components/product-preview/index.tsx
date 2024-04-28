@@ -8,7 +8,7 @@ import { Region } from "@medusajs/medusa"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
-
+import "./styles.css"
 export default async function ProductPreview({
   productPreview,
   isFeatured,
@@ -33,6 +33,9 @@ export default async function ProductPreview({
   })
 
   return (
+
+
+    
     <LocalizedClientLink
       href={`/products/${productPreview.handle}`}
       className="group"
@@ -43,15 +46,16 @@ export default async function ProductPreview({
           size="square"
           isFeatured={isFeatured}
         />
-       <div className="flex flex-col mt-4 md:flex-row md:justify-between items-center">
-    <Text className="text-lg md:text-compact-medium md:mr-4 text-ui-fg-subtle" data-testid="product-title">
-        {productPreview.title}
-    </Text>
-    <div className="flex items-center mt-2 md:mt-0">
-        {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
-    </div>
-</div>
+        <div className="flex flex-col mt-4  md:justify-between items-center">
+          <Text className="large:text-2xl md:text-compact-medium md:mr-4 font-bold" data-testid="product-title">
+            {productPreview.title}
+          </Text>
+          <div className="flex items-center mt-2 md:mt-0">
+            {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
+          </div>
+        </div>
       </div>
     </LocalizedClientLink>
+
   )
 }

@@ -12,10 +12,9 @@ type ItemsProps = {
 
 const Items = ({ items, region }: ItemsProps) => {
   return (
-    <div className="flex flex-col">
-      <Divider className="!mb-0" />
+    <div className="flex flex-co test">
       <Table>
-        <Table.Body data-testid="products-table">
+        <Table.Body data-testid="products-table test !w-full">
           {items?.length && region
             ? items
                 .sort((a, b) => {

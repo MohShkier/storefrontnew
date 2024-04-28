@@ -50,13 +50,13 @@ const Addresses = ({
   const [message, formAction] = useFormState(setAddresses, null)
 
   return (
-    <div className="bg-white">
+    <div className="bg-white test">
       <div className="flex flex-row items-center justify-between mb-6">
         <Heading
           level="h2"
           className="flex flex-row text-3xl-regular gap-x-2 items-baseline"
         >
-          Shipping Address
+          موقع التوصيل :
           {!isOpen && <CheckCircleSolid />}
         </Heading>
         {!isOpen && cart?.shipping_address && (
@@ -66,7 +66,7 @@ const Addresses = ({
               className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
               data-testid="edit-address-button"
             >
-              Edit
+              تعديل
             </button>
           </Text>
         )}
@@ -88,7 +88,7 @@ const Addresses = ({
                   level="h2"
                   className="text-3xl-regular gap-x-4 pb-6 pt-8"
                 >
-                  Billing address
+                  عنوان التوصيل
                 </Heading>
 
                 <BillingAddress cart={cart} countryCode={countryCode} />
@@ -106,7 +106,7 @@ const Addresses = ({
                 <div className="flex items-start gap-x-1 w-full">
                   <div className="flex flex-col w-1/3" data-testid="shipping-address-summary">
                     <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                      Shipping Address
+                     عنوان التوصيل
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
                       {cart.shipping_address.first_name}{" "}
@@ -127,7 +127,7 @@ const Addresses = ({
 
                   <div className="flex flex-col w-1/3 " data-testid="shipping-contact-summary">
                     <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                      Contact
+                      معلومات التواصل
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
                       {cart.shipping_address.phone}
@@ -139,12 +139,12 @@ const Addresses = ({
 
                   <div className="flex flex-col w-1/3" data-testid="billing-address-summary">
                     <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                      Billing Address
+                    عنوان الدفع
                     </Text>
 
                     {sameAsSBilling ? (
                       <Text className="txt-medium text-ui-fg-subtle">
-                        Billing- and delivery address are the same.
+                        عنوان الدفع مطابق لعنوان التوصيل
                       </Text>
                     ) : (
                       <>

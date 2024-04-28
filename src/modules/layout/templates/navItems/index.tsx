@@ -5,7 +5,7 @@ import {useContext} from "react";
 import Products from "./Products";
 export default async function NavItems() {
     return (
-        <div className={""}>
+        <div className={"test"}>
             <nav className="main-menu bg-grey-300  p-3 shadow-md  hover:shadow-lg inset-x-0 z-50 h-full 2xsmall:max-large:h-[12rem]">
                 <div className="flex  overflow-x-auto justify-center items-center !h-full">
                     <ul className="flex-shrink-0 flex large:max-w-[80rem] w-full">

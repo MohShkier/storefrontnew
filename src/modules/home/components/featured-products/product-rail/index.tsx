@@ -23,10 +23,10 @@ export default function ProductRail({
       <div className="flex justify-between mb-8">
         <Text className="txt-xlarge">{collection.title}</Text>
         <InteractiveLink href={`/collections/${collection.handle}`}>
-          View all
+         عرض الكل
         </InteractiveLink>
       </div>
-      <ul className="grid grid-cols-2 small:grid-cols-3 large:gap-x-12 gap-x-6 gap-y-24 small:gap-y-12 xsmall:gap-y-12 2xsmall:gap-y-12 ">
+      <ul className="grid 2xsmall:grid-cols-2 xsmall:grid-cols-3 small:max-large:grid-cols-3 large:grid-cols-4 large:gap-x-12 gap-x-6 gap-y-24 small:gap-y-12 xsmall:gap-y-12 2xsmall:gap-y-12 ">
         {products &&
           products.map((product) => (
             <li key={product.id} >

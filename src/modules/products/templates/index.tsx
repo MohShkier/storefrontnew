@@ -30,14 +30,27 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
   return (
     <>
-      <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative" data-testid="product-container">
+      <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative " data-testid="product-container">
         <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-6">
-          <ProductInfo product={product} />
-          <ProductTabs product={product} />
+      <div className="product-description flex justify-center ">
+        <div className="max-w-md"> {/* Adjust the max width as needed */}
+          <h2 className="text-lg font-semibold text-center pb-5">الوصف</h2>
+          {product.description && (
+            <ul className="list-disc list-inside">
+              {product.description.split('\n').map((line, index) => (
+                line.trim() !== "" && (
+                  <li key={index} className="text-sm pt-5 ps-3">{line}</li>
+                )
+              ))}
+            </ul>
+          )}
         </div>
-        <div className="block w-full relative">
+      </div>
+        </div>
+        <div className="flex flex-col gap-y-7   relative small:sticky small:top-48 small:py-0 s w-full py-8">
+          <ProductInfo product={product} />
           <ImageGallery images={product?.images || []} />
-   
+
         </div>
         <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-12">
           <Suspense
@@ -48,20 +61,6 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         </div>
       </div>
 
-      <div className="product-description flex justify-center ">
-    <div className="max-w-md"> {/* Adjust the max width as needed */}
-        <h2 className="text-lg font-semibold text-center pb-5">Description</h2>
-        {product.description && (
-            <ul className="list-disc list-inside">
-                {product.description.split('\n').map((line, index) => (
-                    line.trim() !== "" && (
-                        <li key={index} className="text-sm pt-5 ps-3">{line}</li>
-                    )
-                ))}
-            </ul>
-        )}
-    </div>
-</div>
       <div className="content-container my-16 small:my-32" data-testid="related-products-container">
         <Suspense fallback={<SkeletonRelatedProducts />}>
           <RelatedProducts product={product} countryCode={countryCode} />

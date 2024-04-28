@@ -28,7 +28,7 @@ export default function CategoryTemplate({
   if (!category || !countryCode) notFound()
 
   return (
-    <div className="flex flex-col small:flex-row small:items-start py-6 content-container" data-testid="category-container">
+    <div className="flex flex-col small:flex-row small:items-start py-6 content-container test" data-testid="category-container">
       <RefinementList sortBy={sortBy || "created_at"} data-testid="sort-by-container" />
       <div className="w-full">
         <div className="flex flex-row mb-8 text-2xl-semi gap-4">
@@ -54,25 +54,39 @@ export default function CategoryTemplate({
         )}
         {category.category_children && (
           <div className="mb-8 text-base-large">
-            <ul className="grid grid-cols-1 gap-2">
+            <ul className="grid grid-cols-1 gap-5">
               {category.category_children?.map((c) => (
-                <li key={c.id}>
-                  <InteractiveLink href={`/categories/${c.handle}`}>
-                    {c.name}
-                  </InteractiveLink>
-                </li>
+                <>
+
+                  <li key={c.id} className="pt-10">
+                    <InteractiveLink href={`/categories/${c.handle}`}>
+                      {c.name}
+                     
+                    </InteractiveLink>
+
+                  </li>
+                  <Suspense fallback={<SkeletonProductGrid />}>
+                    <PaginatedProducts
+                      sortBy={sortBy || "created_at"}
+                      page={pageNumber}
+                      categoryId={c.id}
+                      countryCode={countryCode}
+                    />
+                  </Suspense>
+                </>
               ))}
             </ul>
           </div>
         )}
-        <Suspense fallback={<SkeletonProductGrid />}>
+        {/*<Suspense fallback={<SkeletonProductGrid />}>
           <PaginatedProducts
+         
             sortBy={sortBy || "created_at"}
             page={pageNumber}
             categoryId={category.id}
             countryCode={countryCode}
           />
-        </Suspense>
+      </Suspense>*/}
       </div>
     </div>
   )

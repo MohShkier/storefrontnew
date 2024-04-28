@@ -13,10 +13,10 @@ type ItemProps = {
 
 const Item = ({ item, region }: ItemProps) => {
   return (
-    <Table.Row className="w-full" data-testid="product-row">
-      <Table.Cell className="!pl-0 p-4 w-24">
-        <div className="flex w-16">
-          <Thumbnail thumbnail={item.thumbnail} size="square" className="!min-w-[11rem]" />
+    <Table.Row className="!w-full" data-testid="product-row">
+      <Table.Cell className="!pl-0 p-4 !w-24">
+        <div className="flex w-24">
+          <Thumbnail thumbnail={item.thumbnail} size="square"  />
         </div>
       </Table.Cell>
         

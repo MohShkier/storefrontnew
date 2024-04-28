@@ -60,7 +60,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
       <div className="txt-medium">
         {gift_cards.length > 0 && (
           <div className="flex flex-col mb-4">
-            <Heading className="txt-medium">Gift card(s) applied:</Heading>
+            <Heading className="txt-medium">كود الهدايا المطبق :</Heading>
             {gift_cards?.map((gc) => (
               <div
                 className="flex items-center justify-between txt-small-plus"
@@ -68,7 +68,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                 data-testid="gift-card"
               >
                 <Text className="flex gap-x-1 items-baseline">
-                  <span>Code: </span>
+                  <span>الكود : </span>
                   <span className="truncate" data-testid="gift-card-code">{gc.code}</span>
                 </Text>
                 <Text className="font-semibold" data-testid="gift-card-amount">
@@ -122,7 +122,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                 className="txt-medium text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
                 data-testid="add-discount-button"
               >
-                Add gift card or discount code
+                قم باضافة كود الهدية او الخصم
               </button>
               <Tooltip content="You can add multiple gift cards, but only one discount code.">
                 <InformationCircleSolid color="var(--fg-muted)" />
@@ -132,13 +132,13 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
               <>
                 <div className="flex w-full gap-x-2 items-center">
                   <Input
-                    label="Please enter code"
+                    label="قم بادخال كود الهدية"
                     name="code"
                     type="text"
                     autoFocus={false}
                     data-testid="discount-input"
                   />
-                  <SubmitButton variant="secondary" data-testid="discount-apply-button">Apply</SubmitButton>
+                  <SubmitButton variant="secondary" data-testid="discount-apply-button">تفعيل</SubmitButton>
                 </div>
                 <ErrorMessage error={message} data-testid="discount-error-message" />
               </>

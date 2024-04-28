@@ -55,7 +55,7 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
             "small:w-24 w-12": type === "full",
           })}
         >
-          <Thumbnail thumbnail={item.thumbnail} size="square" className={"h-[10rem]"} />
+          <Thumbnail thumbnail={item.thumbnail} size="square"  />
         </LocalizedClientLink>
       </Table.Cell>
 

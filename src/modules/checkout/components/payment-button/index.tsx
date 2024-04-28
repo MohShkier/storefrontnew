@@ -131,7 +131,7 @@ const StripePaymentButton = ({
         isLoading={submitting}
         data-testid={dataTestId}
       >
-        Place order
+        تاكيد الطلب
       </Button>
       <ErrorMessage error={errorMessage} data-testid="stripe-payment-error-message" />
     </>
@@ -226,7 +226,7 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
         size="large"
         data-testid="submit-order-button"
       >
-        Place order
+       تاكيد الطلب
       </Button>
       <ErrorMessage error={errorMessage} data-testid="manual-payment-error-message" />
     </>

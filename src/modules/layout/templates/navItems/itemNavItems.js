@@ -2,58 +2,58 @@
 
 const itemsNavitems = [
     {
-        name: "Offers",
+        name: "العروض",
         linkTo: "offers",
         imgSrc: "https://i.ibb.co/qmCTcrL/discount.png",
     },
     {
-        name: "Used Devices",
+        name: "الأجهزة المستخدمة",
         linkTo: "used",
         imgSrc: "https://i.ibb.co/vDcdYjd/device-connectors.png",
 
 
     },
     {
-        name: "Mobiles",
+        name: "الهواتف",
         linkTo: "mobiles",
         imgSrc: "https://i.ibb.co/HpwH6Yg/devices.png"
 
     },
     {
-        name: "Accesories",
+        name: "الاكسسوارات",
         linkTo: "acces",
         imgSrc:"https://i.ibb.co/pWwykN4/usb.png",
 
     },
 
     {
-        name: "Laptops",
+        name: "لابتوب",
         linkTo: "laptops",
         imgSrc: "https://i.ibb.co/T1hG12L/laptop.png",
 
     },
 
     {
-        name: "Smart Devices",
+        name: "اجهزة ذكية",
         linkTo: "gifts",
         imgSrc: "https://i.ibb.co/vDcdYjd/device-connectors.png",
 
 
     },
     {
-        name: "Games",
+        name: "الالعاب",
         linkTo: "gifts",
         imgSrc: "https://i.ibb.co/ypPY1LZ/console.png",
 
     },
 
     {
-        name: "Maintenance",
+        name: "الصيانة",
         linkTo: "gifts",
         imgSrc: "https://i.ibb.co/QN5gv0L/tools.png",
     },
     {
-        name: "Gifts",
+        name: "الهدايا",
         linkTo: "page1",
         imgSrc: "https://i.ibb.co/ysJ4NQ3/gift-box.png",
     },

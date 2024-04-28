@@ -79,14 +79,14 @@ const ShippingAddress = ({
       {customer && (addressesInRegion?.length || 0) > 0 && (
         <Container className="mb-6 flex flex-col gap-y-4 p-5">
           <p className="text-small-regular">
-            {`Hi ${customer.first_name}, do you want to use one of your saved addresses?`}
+            {`Hi ${customer.first_name}, هل تريد استعمال احد العناوين المسجلة بحسابك ؟?`}
           </p>
           <AddressSelect addresses={customer.shipping_addresses} cart={cart} />
         </Container>
       )}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 test">
         <Input
-          label="First name"
+          label="الاسم الاول"
           name="shipping_address.first_name"
           autoComplete="given-name"
           value={formData["shipping_address.first_name"]}
@@ -95,7 +95,7 @@ const ShippingAddress = ({
           data-testid="shipping-first-name-input"
         />
         <Input
-          label="Last name"
+          label="الاسم الاخير"
           name="shipping_address.last_name"
           autoComplete="family-name"
           value={formData["shipping_address.last_name"]}
@@ -104,7 +104,7 @@ const ShippingAddress = ({
           data-testid="shipping-last-name-input"
         />
         <Input
-          label="Address"
+          label="عنوان التوصيل"
           name="shipping_address.address_1"
           autoComplete="address-line1"
           value={formData["shipping_address.address_1"]}
@@ -115,7 +115,7 @@ const ShippingAddress = ({
 
 
         <Input
-          label="City"
+          label="المدينة"
           name="shipping_address.city"
           autoComplete="address-level2"
           value={formData["shipping_address.city"]}
@@ -125,6 +125,7 @@ const ShippingAddress = ({
         />
         <CountrySelect
           name="shipping_address.country_code"
+          className="ps-3"
           autoComplete="country"
           region={cart?.region}
           value={formData["shipping_address.country_code"]}
@@ -134,18 +135,18 @@ const ShippingAddress = ({
         />
 
       </div>
-      <div className="my-8">
+      <div className="my-8 hidden">
         <Checkbox
-          label="Billing address same as shipping address"
+          label="عنوان الدفع مطابق لعنوان التوصيل"
           name="same_as_billing"
           checked={checked}
           onChange={onChange}
           data-testid="billing-address-checkbox"
         />
       </div>
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-2 gap-4 mb-4 py-5">
         <Input
-          label="Email"
+          label="الايميل"
           name="email"
           type="email"
           title="Enter a valid email address."
@@ -157,7 +158,7 @@ const ShippingAddress = ({
         />
         <Input
         type="phone"
-          label="Phone"
+          label="رقم الهاتف"
           name="shipping_address.phone"
           autoComplete="tel"
           value={formData["shipping_address.phone"]}

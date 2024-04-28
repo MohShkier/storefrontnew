@@ -30,7 +30,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
     return (
         <>
         <Swiper
-            className={classAdded + "Sswiper  mt-10 rounded-3xl small:max-lg:!h-[10rem] 2xsmall:max-small:!w-[30rem]"}
+            className={classAdded + "Sswiper shadow-lg border-2  mt-10 rounded-3xl small:max-lg:!h-[10rem]"}
             spaceBetween={100}
             autoplay={{
 
@@ -48,8 +48,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
           alt=""
           className='SwiperSliderImg'
           src={myImage}
-          width={500}
-          height={500}
+
           loader={({ src }) => src}
         />
       </SwiperSlide>
@@ -59,8 +58,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
           alt=""
           className='SwiperSliderImg'
           src={swiper2}
-          width={500}
-          height={500}
+
           loader={({ src }) => src}
         />
       </SwiperSlide>
@@ -70,8 +68,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
           alt=""
           className='SwiperSliderImg'
           src={swiper3}
-          width={500}
-          height={500}
+
           loader={({ src }) => src}
         />
       </SwiperSlide>
@@ -81,8 +78,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
           alt=""
           className='SwiperSliderImg'
           src={swiper4}
-          width={500}
-          height={500}
+
           loader={({ src }) => src}
         />
       </SwiperSlide>
@@ -92,8 +88,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
           alt=""
           className='SwiperSliderImg'
           src={swiper5}
-          width={500}
-          height={500}
+
           loader={({ src }) => src}
         />
       </SwiperSlide>
@@ -104,8 +99,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
           alt=""
           className='SwiperSliderImg'
           src={swiper6}
-          width={500}
-          height={500}
+     
           loader={({ src }) => src}
         />
       </SwiperSlide>
@@ -115,8 +109,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
           alt=""
           className='SwiperSliderImg'
           src={swiper7}
-          width={500}
-          height={500}
+
           loader={({ src }) => src}
         />
       </SwiperSlide>
@@ -126,8 +119,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
           alt=""
           className='SwiperSliderImg'
           src={swiper8}
-          width={500}
-          height={500}
+
           loader={({ src }) => src}
         />
       </SwiperSlide>

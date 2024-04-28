@@ -1,6 +1,6 @@
 import { LineItem, Region } from "@medusajs/medusa"
 import { Heading, Table } from "@medusajs/ui"
-
+import "../styles.css"
 import Item from "@modules/cart/components/item"
 import SkeletonLineItem from "@modules/skeletons/components/skeleton-line-item"
 
@@ -11,21 +11,21 @@ type ItemsTemplateProps = {
 
 const ItemsTemplate = ({ items, region }: ItemsTemplateProps) => {
   return (
-    <div>
+    <div className="test">
       <div className="pb-3 flex items-center">
-        <Heading className="text-[2rem] leading-[2.75rem]">Cart</Heading>
+        <Heading className="text-[2rem] leading-[2.75rem]">السلة</Heading>
       </div>
-      <Table>
+      <Table >
         <Table.Header className="border-t-0">
-          <Table.Row className="text-ui-fg-subtle txt-medium-plus">
-            <Table.HeaderCell className="!pl-0">Item</Table.HeaderCell>
+          <Table.Row className="text-ui-fg-subtle txt-medium-plus ">
+            <Table.HeaderCell className="">العنصر</Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
-            <Table.HeaderCell>Quantity</Table.HeaderCell>
-            <Table.HeaderCell className="hidden small:table-cell">
-              Price
+            <Table.HeaderCell className=" !pr-[3rem]  !text-right">الكمية</Table.HeaderCell>
+            <Table.HeaderCell className="hidden small:table-cell  !pr-[3rem]  !text-right">
+              السعر
             </Table.HeaderCell>
-            <Table.HeaderCell className="!pr-0 text-right">
-              Total
+            <Table.HeaderCell className=" text-right">
+              المجموع
             </Table.HeaderCell>
           </Table.Row>
         </Table.Header>

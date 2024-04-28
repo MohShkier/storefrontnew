@@ -34,47 +34,48 @@ const Swiperz2: React.FC<Swiperz2Props> = ({ classAdded, itemsArray }) => {
 
   return (
     <>
-      {isLoading ? (
-        <></>
-) : (
-        <div>
+     <div>
           <div className='mt-10'>
-            <h2 className='text-center font-bold text-3xl '>Sales & Special Offer </h2>
+            <h2 className='text-center font-bold text-3xl '>الخصومات والعروضة المميزة </h2>
           </div>
           <Swiper
-            className='mt-10 w-5/6'
-            spaceBetween={60}
+            className='mt-10 w-10/12 2xl:w-8/12 2xsmall:max-xsmall:w-10/12'
+            spaceBetween={10}
             loop={true}
+            centeredSlides={true}
+            centerInsufficientSlides={true}
+            centeredSlidesBounds={true}
             autoplay={{ delay: 2500, disableOnInteraction: true }}
             navigation
             breakpoints={{
-              510: { slidesPerView: 1 },
+              310:{slidesPerView:2},
+              510: { slidesPerView: 2 },
               640: { slidesPerView: 2 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1280: { slidesPerView: 3 },
-              1536: { slidesPerView: 3 },
+              768: { slidesPerView: 4 },
+              1024: { slidesPerView: 4 },
+              1280: { slidesPerView: 4 },
+              1536: { slidesPerView: 4 },
             }}
           >
             {itemsArray.map((item, index) => (
               <div key={index} >
                 {item.products.map((singleItem, productIndex) => (
                   <>
-                    {singleItem.price?.price_type === "sale" && 
+
                       <SwiperSlide key={productIndex}>
-                        <div className="relative mb-6">
-                          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-red-500 text-white py-1 px-2 rounded-md z-10 w-[5rem] text-xl font-bold">
-                            Sales
+                      <div className="relative mb-9 2xsmall:max-small:mb-5">
+                          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-red-500 text-white py-1 px-2 rounded-md z-10 w-[6rem] text-xl font-bold 2xsmall:max-small:w-[4rem] 2xsmall:max-small:text-xs 2xsmall:max-small:mb-2">
+                            خصومات
                           </div>
                         </div>
                         <LocalizedClientLink href={`/products/${singleItem.handle}`} className="group">
                           <div>
                             <Thumbnail thumbnail={singleItem.thumbnail} size="square" />
-                            <div className="flex txt-compact-medium mt-4 justify-between">
+                            <div className="flex txt-compact-medium mt-4 justify-between 2xsmall:max-medium:flex-col">
                               <Text className="text-ui-fg-subtle" data-testid="product-title">
                                 {singleItem.title}
                               </Text>
-                              <div className="flex items-center gap-x-2">
+                              <div className="flex items-center gap-x-2 2xsmall:max-medium:flex-col">
                                 <div className='line-through'>{singleItem.price?.original_price}</div>
                                 {<div className='text-red-500'>{singleItem.price?.calculated_price}</div>}
                               </div>
@@ -82,16 +83,17 @@ const Swiperz2: React.FC<Swiperz2Props> = ({ classAdded, itemsArray }) => {
                           </div>
                         </LocalizedClientLink>
                       </SwiperSlide>
-                    }
+                   
                   </>
                 ))}
               </div>
             ))}
           </Swiper>
         </div>
-      )}
-    </>
+      </>
   );
 }
 
 export default Swiperz2;
+
+        
