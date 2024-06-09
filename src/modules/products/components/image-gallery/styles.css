@@ -1,0 +1,65 @@
+.custom-main-image-container {
+  width: 100%;
+  max-width: 30rem; /* Adjust the width of the main image container */
+}
+
+.custom-image-swiper {
+  width: 100%;
+  max-width: 30rem;
+  height: 10rem; /* Adjust height for better appearance */
+  position: relative;
+}
+
+.custom-swiper-pagination {
+  width: 100%;
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center the pagination bullets horizontally */
+  align-items: center; /* Center the pagination bullets vertically */
+  padding-top: 0px;
+}
+
+/* Additional styles for pagination dots */
+.custom-swiper-pagination .swiper-pagination-bullet {
+  background: gray; /* Change color to red */
+  opacity: 1; /* Ensure they are visible */
+  margin: 0 5px; /* Adjust spacing between bullets */
+  width: 12px; /* Adjust size as needed */
+  height: 12px; /* Adjust size as needed */
+  border-radius: 50%; /* Make them circular */
+  box-shadow: none; /* Remove any shadow */
+}
+
+.custom-swiper-pagination .swiper-pagination-bullet-active {
+  background: red; /* Change active color to a darker red */
+}
+
+.custom-rounded {
+  border-radius: 10px; /* Adjust as needed */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.custom-rounded-thumb {
+  border-radius: 10px; /* Adjust as needed */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.custom-swiper-container {
+  position: relative;
+}
+
+.custom-swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-swiper-button-prev,
+.custom-swiper-button-next {
+  top : 80% !important;
+  display: none;
+}
+

@@ -24,13 +24,13 @@ const OrderOverview = ({ orders }: { orders: Order[] }) => {
 
   return (
     <div className="w-full flex flex-col items-center gap-y-4" data-test="no-orders-container">
-      <h2 className="text-large-semi">Nothing to see here</h2>
+      <h2 className="text-large-semi">لا يوجد بيانات</h2>
       <p className="text-base-regular">
-        You don&apos;t have any orders yet, let us change that {":)"}
+        لا يوجد لديك طلبات سابقة ، دعنا نغير ذلك الآن {":)"}
       </p>
       <div className="mt-4">
         <LocalizedClientLink href="/" passHref>
-          <Button data-testid="continue-shopping-button">Continue shopping</Button>
+          <Button data-testid="continue-shopping-button">الاستمرار بالشراء</Button>
         </LocalizedClientLink>
       </div>
     </div>

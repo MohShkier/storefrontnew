@@ -39,7 +39,6 @@ export default function OrderCompletedTemplate({
           <CartTotals data={order} />
           <ShippingDetails order={order} />
           <PaymentDetails order={order} />
-          <Help />
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ import User from "@modules/common/icons/user"
 import MapPin from "@modules/common/icons/map-pin"
 import Package from "@modules/common/icons/package"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-
+import "./styles.css"
 const AccountNav = ({
   customer,
 }: {
@@ -25,22 +25,22 @@ const AccountNav = ({
   }
 
   return (
-    <div>
-      <div className="small:hidden" data-testid="mobile-account-nav">
+    <div className="test">
+      <div className="small:hidden" data-testid="mobile-account-nav rtl test">
         {route !== `/${countryCode}/account` ? (
           <LocalizedClientLink
             href="/account"
-            className="flex items-center gap-x-2 text-small-regular py-2"
+            className="flex items-center gap-x-2 text-small-regular py-2 test"
           >
             <>
               <ChevronDown className="transform rotate-90" />
-              <span>Account</span>
+              <span>الحساب</span>
             </>
           </LocalizedClientLink>
         ) : (
           <>
             <div className="text-xl-semi mb-4 px-8">
-              Hello {customer?.first_name}
+              مرحباً {customer?.first_name}
             </div>
             <div className="text-base-regular">
               <ul>
@@ -53,7 +53,7 @@ const AccountNav = ({
                     <>
                       <div className="flex items-center gap-x-2">
                         <User size={20} />
-                        <span>Profile</span>
+                        <span>البروفايل</span>
                       </div>
                       <ChevronDown className="transform -rotate-90" />
                     </>
@@ -68,7 +68,7 @@ const AccountNav = ({
                     <>
                       <div className="flex items-center gap-x-2">
                         <MapPin size={20} />
-                        <span>Addresses</span>
+                        <span>العناوين</span>
                       </div>
                       <ChevronDown className="transform -rotate-90" />
                     </>
@@ -82,7 +82,7 @@ const AccountNav = ({
                   >
                     <div className="flex items-center gap-x-2">
                       <Package size={20} />
-                      <span>Orders</span>
+                      <span>الطلبات</span>
                     </div>
                     <ChevronDown className="transform -rotate-90" />
                   </LocalizedClientLink>
@@ -96,7 +96,7 @@ const AccountNav = ({
                   >
                     <div className="flex items-center gap-x-2">
                       <ArrowRightOnRectangle />
-                      <span>Log out</span>
+                      <span>تسجيل الخروج</span>
                     </div>
                     <ChevronDown className="transform -rotate-90" />
                   </button>
@@ -106,10 +106,10 @@ const AccountNav = ({
           </>
         )}
       </div>
-      <div className="hidden small:block" data-testid="account-nav">
+      <div className="hidden small:block" data-testid="account-nav test">
         <div>
           <div className="pb-4">
-            <h3 className="text-base-semi">Account</h3>
+            <h3 className="text-base-semi">الحساب</h3>
           </div>
           <div className="text-base-regular">
             <ul className="flex mb-0 justify-start items-start flex-col gap-y-4">
@@ -119,7 +119,7 @@ const AccountNav = ({
                   route={route!}
                   data-testid="overview-link"
                 >
-                  Overview
+                  مُلخص عام
                 </AccountNavLink>
               </li>
               <li>
@@ -128,7 +128,7 @@ const AccountNav = ({
                   route={route!}
                   data-testid="profile-link"
                 >
-                  Profile
+                  البروفايل
                 </AccountNavLink>
               </li>
               <li>
@@ -137,7 +137,7 @@ const AccountNav = ({
                   route={route!}
                   data-testid="addresses-link"
                 >
-                  Addresses
+                  العناوين
                 </AccountNavLink>
               </li>
               <li>
@@ -146,7 +146,7 @@ const AccountNav = ({
                   route={route!}
                   data-testid="orders-link"
                 >
-                  Orders
+                  الطلبات
                 </AccountNavLink>
               </li>
               <li className="text-grey-700">
@@ -155,7 +155,7 @@ const AccountNav = ({
                   onClick={handleLogout}
                   data-testid="logout-button"
                 >
-                  Log out
+                  تسجيل الخروج
                 </button>
               </li>
             </ul>
@@ -179,8 +179,8 @@ const AccountNavLink = ({ href, route, children }: AccountNavLinkProps) => {
   return (
     <LocalizedClientLink
       href={href}
-      className={clx("text-ui-fg-subtle hover:text-ui-fg-base", {
-        "text-ui-fg-base font-semibold": active,
+      className={clx("text-ui-fg-subtle hover:text-ui-fg-base test !rtl test", {
+        "text-ui-fg-base font-semibold test rtl": active,
       })}
     >
       {children}

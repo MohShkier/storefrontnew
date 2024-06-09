@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
-
 import { ProductCategoryWithChildren } from "types/global"
 import InteractiveLink from "@modules/common/components/interactive-link"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
@@ -8,7 +7,8 @@ import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
 export default function CategoryTemplate({
   categories,
   sortBy,
@@ -29,7 +29,30 @@ export default function CategoryTemplate({
 
   return (
     <div className="flex flex-col small:flex-row small:items-start py-6 content-container test" data-testid="category-container">
+      <div>
+
       <RefinementList sortBy={sortBy || "created_at"} data-testid="sort-by-container" />
+     { /*{category.category_children && (
+        
+        <div className="mb-8 text-base-large">
+            <ul className="grid grid-cols-1 gap-5">
+              {category.category_children?.map((c) => (
+                <>
+                  <li key={c.id} className="pt-10">
+                    <LocalizedClientLink href={`/categories/${c.handle}`}>
+                      {c.name}
+                     
+                    </LocalizedClientLink>
+
+                  </li>
+               
+                </>
+              ))}
+            </ul>
+          </div>
+        )}
+      <CategoryTemp categories={categories}/>*/}
+      </div>
       <div className="w-full">
         <div className="flex flex-row mb-8 text-2xl-semi gap-4">
           {parents &&
@@ -56,15 +79,20 @@ export default function CategoryTemplate({
           <div className="mb-8 text-base-large">
             <ul className="grid grid-cols-1 gap-5">
               {category.category_children?.map((c) => (
-                <>
+                <div className="mb-[6rem]">
 
-                  <li key={c.id} className="pt-10">
-                    <InteractiveLink href={`/categories/${c.handle}`}>
-                      {c.name}
+                  <li key={c.id} className="pt-10 pb-5 flex justify-between font-bold text-3xl items-center  ">
+                    
+                    <LocalizedClientLink href={`/categories/${c.handle}`  } className="hover:text-red-700 hover:underline text-red-500 mr-4 ">
+
+                      {"عرض الكل"}
                      
-                    </InteractiveLink>
+                    </LocalizedClientLink>
+
+                      {c.name}
 
                   </li>
+                  
                   <Suspense fallback={<SkeletonProductGrid />}>
                     <PaginatedProducts
                       sortBy={sortBy || "created_at"}
@@ -73,12 +101,12 @@ export default function CategoryTemplate({
                       countryCode={countryCode}
                     />
                   </Suspense>
-                </>
+                </div>
               ))}
             </ul>
           </div>
         )}
-        {/*<Suspense fallback={<SkeletonProductGrid />}>
+        {category.parent_category && <Suspense fallback={<SkeletonProductGrid />}>
           <PaginatedProducts
          
             sortBy={sortBy || "created_at"}
@@ -86,7 +114,7 @@ export default function CategoryTemplate({
             categoryId={category.id}
             countryCode={countryCode}
           />
-      </Suspense>*/}
+      </Suspense>}
       </div>
     </div>
   )

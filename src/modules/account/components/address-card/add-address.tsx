@@ -47,27 +47,27 @@ const AddAddress = ({ region }: { region: Region }) => {
         onClick={open}
         data-testid="add-address-button"
       >
-        <span className="text-base-semi">New address</span>
+        <span className="text-base-semi">عنوان جديد</span>
         <Plus />
       </button>
 
       <Modal isOpen={state} close={close} data-testid="add-address-modal">
         <Modal.Title>
-          <Heading className="mb-2">Add address</Heading>
+          <Heading className="mb-2">اضافة عنوان</Heading>
         </Modal.Title>
         <form action={formAction}>
           <Modal.Body>
-            <div className="flex flex-col gap-y-2">
+            <div className="flex flex-col gap-y-2 test">
               <div className="grid grid-cols-2 gap-x-2">
                 <Input
-                  label="First name"
+                  label="الاسم الاول"
                   name="first_name"
                   required
                   autoComplete="given-name"
                   data-testid="first-name-input"
                 />
                 <Input
-                  label="Last name"
+                  label="الاسم الاخير"
                   name="last_name"
                   required
                   autoComplete="family-name"
@@ -78,31 +78,33 @@ const AddAddress = ({ region }: { region: Region }) => {
                 label="Company"
                 name="company"
                 autoComplete="organization"
+                className="hidden"
                 data-testid="company-input"
               />
               <Input
-                label="Address"
+                label="العنوان"
                 name="address_1"
                 required
                 autoComplete="address-line1"
                 data-testid="address-1-input"
               />
               <Input
-                label="Apartment, suite, etc."
+                label=""
                 name="address_2"
                 autoComplete="address-line2"
                 data-testid="address-2-input"
+                className="hidden"
               />
-              <div className="grid grid-cols-[144px_1fr] gap-x-2">
-                <Input
-                  label="Postal code"
+              <div className="grid  gap-x-2">
+              <Input
+                  label=""
                   name="postal_code"
-                  required
+                  className="hidden"
                   autoComplete="postal-code"
                   data-testid="postal-code-input"
                 />
                 <Input
-                  label="City"
+                  label="المدينة"
                   name="city"
                   required
                   autoComplete="locality"
@@ -112,6 +114,7 @@ const AddAddress = ({ region }: { region: Region }) => {
               <Input
                 label="Province / State"
                 name="province"
+                className="hidden"
                 autoComplete="address-level1"
                 data-testid="state-input"
               />
@@ -121,7 +124,7 @@ const AddAddress = ({ region }: { region: Region }) => {
                 required
                 autoComplete="country"
               />
-              <Input label="Phone" name="phone" autoComplete="phone" data-testid="phone-input" />
+              <Input label="رقم الهاتف" name="phone" autoComplete="phone" data-testid="phone-input" required />
             </div>
             {formState.error && (
               <div className="text-rose-500 text-small-regular py-2" data-testid="address-error">
@@ -130,7 +133,7 @@ const AddAddress = ({ region }: { region: Region }) => {
             )}
           </Modal.Body>
           <Modal.Footer>
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-3 mt-6 !justify-center items-center">
               <Button
                 type="reset"
                 variant="secondary"
@@ -138,9 +141,9 @@ const AddAddress = ({ region }: { region: Region }) => {
                 className="h-10"
                 data-testid="cancel-button"
               >
-                Cancel
+                الغاء
               </Button>
-              <SubmitButton data-testid="save-button">Save</SubmitButton>
+              <SubmitButton data-testid="save-button">حفظ</SubmitButton>
             </div>
           </Modal.Footer>
         </form>

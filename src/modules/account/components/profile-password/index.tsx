@@ -33,32 +33,32 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
   return (
     <form action={formAction} onReset={() => clearState()} className="w-full">
       <AccountInfo
-        label="Password"
+        label="كلمة المرور"
         currentInfo={
-          <span>The password is not shown for security reasons</span>
+          <span>كلمة المرور مخفية لاسباب امنية</span>
         }
         isSuccess={successState}
         isError={!!state.error}
         errorMessage={state.error}
         clearState={clearState}
       >
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 test">
           <Input
-            label="Old password"
+            label="كلمة المرور القديمة"
             name="old_password"
             required
             type="password"
             data-testid="old-password-input"
           />
           <Input
-            label="New password"
+            label="كلمة المرور الجديدة"
             type="password"
             name="new_password"
             required
             data-testid="new-password-input"
           />
           <Input
-            label="Confirm password"
+            label="تأكيد كلمة المرور"
             type="password"
             name="confirm_password"
             required

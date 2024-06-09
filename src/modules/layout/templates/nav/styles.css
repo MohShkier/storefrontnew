@@ -20,11 +20,16 @@
   /* Adjust Swiper navigation */
   .swiper-button-next::after,
   .swiper-button-prev::after {
+    top: 50% !important;
     color: red; /* Customize the color as needed */
     font-size: 25px !important;
     bottom: 20px !important;
   }
 
+  .swiper-button-next,
+  .swiper-button-prev {
+    top : 50%;
+  }
 
   /*@media only screen and (min-width: 310px) and (max-width: 650px) {
     .swiper-button-next,
@@ -33,5 +38,53 @@
     }
 }*/
 .test {
-  direction: rtl;
+  direction: rtl !important;
+}
+
+
+/* styles.css */
+
+/* styles.css */
+
+/* styles.css */
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0.5;
+    transform: translateX(2px); /* Minimal translation */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* No scaling or position change */
+  }
+}
+
+.animated-swiper .swiper-slide {
+  opacity: 0.5;
+  transform: translateX(2px); /* Minimal translation */
+}
+
+.animated-swiper .swiper-slide-active {
+  animation: fadeSlideIn 0.6s ease-in-out forwards;
+}
+
+.swiper-pagination {
+  position: absolute;
+  display: flex;
+  top: auto !important;
+  justify-content: center !important;
+  z-index: 10; /* Ensure pagination is above the slides */
+}
+
+.swiper-pagination-bullet {
+  background-color: #ff0000; /* Change the background color of pagination dots */
+  width: 10px; /* Set the width of pagination dots */
+  height: 10px; /* Set the height of pagination dots */
+  margin: 0 5px; /* Adjust the space between pagination dots */
+  border-radius: 50%; /* Make pagination dots circular */
+}
+
+/* Customize the color of active pagination dot */
+.swiper-pagination-bullet-active {
+  background-color: rgb(252, 72, 7); /* Change the background color of active pagination dot */
 }

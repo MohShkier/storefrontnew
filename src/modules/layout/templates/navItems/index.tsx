@@ -11,17 +11,17 @@ export default async function NavItems() {
                     <ul className="flex-shrink-0 flex large:max-w-[80rem] w-full">
                         {itemsNavitems &&
                             itemsNavitems.map((child, index) => (
-                                <li key={index} className="nav-item text-center hover:bg-gray-100 !w-[25rem] ">
                                     <LocalizedClientLink
-                                        className=" nav-link p-2 flex flex-col justify-center items-center hover:shadow-lg max-h-[7rem]"
+                                        className="nav-item text-center hover:bg-gray-100 !w-[25rem] "
                                         href={`/offers`}>
+                                <li key={index} className=" nav-link p-2 flex flex-col justify-center items-center hover:shadow-lg max-h-[7rem]">
 
                                         <img src={child.imgSrc} className="max-h-[4rem] " alt={child.name}/>
                                         <span className="mt-1">
                                                       <h1 className="font-bold pt-2 2xsmall:max-small:w-[6rem]">{child.name}</h1>
                                                   </span>
-                                    </LocalizedClientLink>
                                 </li>
+                                    </LocalizedClientLink>
                             ))}
                     </ul>
                 </div>

@@ -30,29 +30,29 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
   return (
     <>
-      <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative " data-testid="product-container">
-        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-6">
-      <div className="product-description flex justify-center ">
-        <div className="max-w-md"> {/* Adjust the max width as needed */}
-          <h2 className="text-lg font-semibold text-center pb-5">الوصف</h2>
-          {product.description && (
-            <ul className="list-disc list-inside">
-              {product.description.split('\n').map((line, index) => (
-                line.trim() !== "" && (
-                  <li key={index} className="text-sm pt-5 ps-3">{line}</li>
-                )
-              ))}
-            </ul>
-          )}
+      <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative test" data-testid="product-container">
+        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-6 2xsmall:max-small:order-3">
+          <div className="product-description flex justify-center ">
+            <div className="max-w-md"> {/* Adjust the max width as needed */}
+              <h2 className="text-lg font-semibold text-center pb-5">الوصف</h2>
+              {product.description && (
+                <ul className="list-none ">
+                  {product.description.split('\n').map((line, index) => (
+                    line.trim() !== "" && (
+                      <li key={index} className="text-md pt-5 ps-3">{line}</li>
+                    )
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
-        </div>
-        <div className="flex flex-col gap-y-7   relative small:sticky small:top-48 small:py-0 s w-full py-8">
+        <div className="flex flex-col gap-y-7   relative small:sticky small:top-48 small:py-0 s w-full py-8 2xsmall:max-small:order-1">
           <ProductInfo product={product} />
           <ImageGallery images={product?.images || []} />
 
         </div>
-        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-12">
+        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-12 2xsmall:max-small:order-2 large:pt-10">
           <Suspense
             fallback={<ProductActions product={product} region={region} />}
           >

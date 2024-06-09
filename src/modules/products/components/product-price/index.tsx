@@ -29,19 +29,19 @@ export default function ProductPrice({
   }
 
   return (
-    <div className="flex flex-col text-ui-fg-base">
+    <div className="flex flex-col text-ui-fg-base test">
       <span
         className={clx("text-xl-semi", {
           "text-red-600": selectedPrice.price_type === "sale",
         })}
       >
-        {!variant && "Now: "}
+        {!variant && "السعر : "}
         {selectedPrice.calculated_price}
       </span>
       {selectedPrice.price_type === "sale" && (
         <>
           <p>
-            <span className="text-ui-fg-subtle line-through">Original: </span>
+            <span className="text-ui-fg-subtle line-through">السعر الأصلي : </span>
             <span className="line-through">{selectedPrice.original_price}</span>
           </p>
     

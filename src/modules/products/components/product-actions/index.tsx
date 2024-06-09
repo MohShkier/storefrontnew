@@ -158,10 +158,10 @@ export default function ProductActions({
           data-testid="add-product-button"
         >
           {!variant
-            ? "Select variant"
+            ? "اختر المواصفات"
             : !inStock
-            ? "Out of stock"
-            : "Add to cart"}
+            ? "نفذ من المخزون"
+            : "اضافة الى السلة"}
         </Button>
         <MobileActions
           product={product}
@@ -173,6 +173,7 @@ export default function ProductActions({
           handleAddToCart={handleAddToCart}
           isAdding={isAdding}
           show={!inView}
+          
         />
       </div>
     </>
