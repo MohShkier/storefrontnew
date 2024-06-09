@@ -79,7 +79,7 @@ export default function CategoryTemplate({
           <div className="mb-8 text-base-large">
             <ul className="grid grid-cols-1 gap-5">
               {category.category_children?.map((c) => (
-                <div className="mb-[6rem]">
+                <div className="mb-[6rem]" key={c.id}>
 
                   <li key={c.id} className="pt-10 pb-5 flex justify-between font-bold text-3xl items-center  ">
                     

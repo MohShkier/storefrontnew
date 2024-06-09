@@ -12,6 +12,7 @@ export default async function NavItems() {
                         {itemsNavitems &&
                             itemsNavitems.map((child, index) => (
                                     <LocalizedClientLink
+                                        key={child.name}
                                         className="nav-item text-center hover:bg-gray-100 !w-[25rem] "
                                         href={`/offers`}>
                                 <li key={index} className=" nav-link p-2 flex flex-col justify-center items-center hover:shadow-lg max-h-[7rem]">
