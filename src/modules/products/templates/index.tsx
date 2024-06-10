@@ -30,7 +30,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
   return (
     <>
-      <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative test" data-testid="product-container">
+      <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative " data-testid="product-container">
         <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-6 2xsmall:max-small:order-3">
           <div className="product-description flex justify-center ">
             <div className="max-w-md"> {/* Adjust the max width as needed */}
