@@ -106,8 +106,8 @@ export default async function Footer() {
           <div className=" contact-creator text-sm text-gray-600 ">
             <span className="font-semibold">مُطور الموقع :</span>
             <div className="mt-2">
-              <span className="block">الاسم: محمد</span>
-              <span className="block">البريد الإلكتروني: contact@mohsh.com</span>
+              <span className="block"> الاسم: محمد شقير</span>
+              <span className="block">البريد الإلكتروني: contact@mohsh.me</span>
               <span className="block">رقم الهاتف: 0782011166</span>
             </div>
 
