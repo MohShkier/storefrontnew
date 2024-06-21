@@ -1,10 +1,11 @@
 .custom-main-image-container {
   width: 100%;
-  max-width: 30rem; /* Adjust the width of the main image container */
+  max-width: 20rem; /* Adjust the width of the main image container */
 }
 
 .custom-image-swiper {
   width: 100%;
+  max-width: 20rem;
   height: 10rem; /* Adjust height for better appearance */
   position: relative;
 }
