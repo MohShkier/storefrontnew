@@ -52,9 +52,9 @@ const Swiperz2: React.FC<Swiperz2Props> = ({ classAdded, itemsArray }) => {
           autoplay={{ delay: 2500, disableOnInteraction: true }}
           navigation
           breakpoints={{
-            310: { slidesPerView: 2 },
-            510: { slidesPerView: 2 },
-            640: { slidesPerView: 2 },
+            310: { slidesPerView: 1 },
+            510: { slidesPerView: 1 },
+            640: { slidesPerView: 1 },
             768: { slidesPerView: 3 },
             1024: { slidesPerView: 3 },
             1280: { slidesPerView: 3 },
