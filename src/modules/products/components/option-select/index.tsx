@@ -29,20 +29,21 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
         {filteredOptions.map((v) => {
           return (
             <button
-              onClick={() => updateOption({ [option.id]: v })}
-              key={v}
-              className={clx(
-                "border-ui-border-base bg-ui-bg-subtle border text-small-regular h-10 rounded-rounded p-2 flex-1 ",
-                {
-                  "border-ui-border-interactive": v === current,
-                  "hover:shadow-elevation-card-rest transition-shadow ease-in-out duration-150":
-                    v !== current,
-                }
-              )}
-              data-testid="option-button"
-            >
-              {v}
-            </button>
+  onClick={() => updateOption({ [option.id]: v })}
+  key={v}
+  className={clx(
+    "border-ui-border-base bg-ui-bg-subtle border text-small-regular h-auto min-h-10 rounded-rounded p-2 flex-1 flex items-center justify-center whitespace-normal break-words",
+    {
+      "border-ui-border-interactive": v === current,
+      "hover:shadow-elevation-card-rest transition-shadow ease-in-out duration-150":
+        v !== current,
+    }
+  )}
+  data-testid="option-button"
+>
+  {v}
+</button>
+
           )
         })}
       </div>
