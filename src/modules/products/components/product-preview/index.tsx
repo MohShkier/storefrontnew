@@ -48,7 +48,7 @@ export default async function ProductPreview({
         />
         <div className="flex flex-col mt-4  md:justify-between items-center">
         <div className="">
-      <Text className="text-xl md:text-compact-medium md:mr-4 font-bold" data-testid="product-title">
+      <Text className="text-xl md:text-compact-medium md:mr-4 font-bold text-center" data-testid="product-title">
         {productPreview.title}
       </Text>
     </div>
