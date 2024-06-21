@@ -21,7 +21,7 @@ const getCollectionsWithProducts = cache(
   async (
     countryCode: string
   ): Promise<ProductCollectionWithPreviews[] | null> => {
-    const { collections } = await getCollectionsList(0, 4)
+    const { collections } = await getCollectionsList(0, 30)
 
     if (!collections) {
       return null
