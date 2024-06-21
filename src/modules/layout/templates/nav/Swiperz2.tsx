@@ -80,7 +80,7 @@ const Swiperz2: React.FC<Swiperz2Props> = ({ classAdded, itemsArray }) => {
                       <div>
                         <Thumbnail thumbnail={singleItem.thumbnail} size="square" />
                         <div className="flex txt-compact-medium mt-4 justify-between flex-col">
-                          <Text className="font-bold text-xl" data-testid="product-title">
+                          <Text className="font-semibold text-md" data-testid="product-title">
                             {singleItem.title}
                           </Text>
                           <div className="flex items-center gap-x-2 flex-col text-lg">
