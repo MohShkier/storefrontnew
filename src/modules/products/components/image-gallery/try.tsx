@@ -43,7 +43,7 @@ const ImageComponent: React.FC<Props> = ({ images }) => {
       </div>
 
       <Swiper
-        className="custom-image-swiper sm:max-lg:max-w-[26rem] max-w-[30rem] !w-full !h-full hover:cursor-pointer"
+        className="custom-image-swiper !w-full !h-full hover:cursor-pointer"
         spaceBetween={10}
         loop={true}
         centeredSlides={true}
