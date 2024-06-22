@@ -11,6 +11,8 @@ import { useIntersection } from "@lib/hooks/use-in-view"
 import { addToCart } from "@modules/cart/actions"
 import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/option-select"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import MobileActions from "../mobile-actions"
 import ProductPrice from "../product-price"
@@ -121,6 +123,23 @@ export default function ProductActions({
     })
 
     setIsAdding(false)
+
+    // Display the toast notification
+    toast(
+      <div>
+        Product added to cart! <br />
+        <a href="/cart" target="_blank" rel="noopener noreferrer" className="text-red-500">Go to cart</a>
+      </div>,
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
   }
 
   return (
@@ -173,8 +192,8 @@ export default function ProductActions({
           handleAddToCart={handleAddToCart}
           isAdding={isAdding}
           show={!inView}
-          
         />
+      <ToastContainer />
       </div>
     </>
   )
