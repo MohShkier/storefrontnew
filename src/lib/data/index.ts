@@ -517,7 +517,7 @@ export const getProductsListWithSort = cache(
     nextPage: number | null
     queryParams?: StoreGetProductsParams
   }> {
-    const limit = queryParams?.limit || 12
+    const limit = queryParams?.limit || 120
 
     const {
       response: { products, count },
