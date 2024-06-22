@@ -127,8 +127,8 @@ export default function ProductActions({
     // Display the toast notification
     toast(
       <div>
-        Product added to cart! <br />
-        <a href="/cart" target="_blank" rel="noopener noreferrer" className="text-red-500">Go to cart</a>
+        تم اضافة المنتج الى سلتك ! <br />
+        <a href="/cart" target="_blank" rel="noopener noreferrer" className="text-red-500">إذهب إلى السلة</a>
       </div>,
       {
         position: "top-right",
