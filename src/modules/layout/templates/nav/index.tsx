@@ -40,6 +40,16 @@ export default async function Nav() {
                   >
                     الحساب
                   </LocalizedClientLink>
+                  {process.env.FEATURE_SEARCH_ENABLED && (
+                <LocalizedClientLink
+                  className="hover:text-ui-fg-base"
+                  href="/search"
+                  scroll={false}
+                  data-testid="nav-search-link"
+                >
+                  Search
+                </LocalizedClientLink>
+              )}
                   <LocalizedClientLink href="/store" className="text-gray-800 text-xl font-semibold hover:text-orange-500">المتجر</LocalizedClientLink>
 
 
