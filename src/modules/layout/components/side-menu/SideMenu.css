@@ -1,0 +1,78 @@
+/* src/SideMenu.css */
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white; /* Change this to the desired color */
+  overflow-x: hidden;
+  transition: transform 0.3s ease;
+  padding-top: 60px;
+  color: black;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transform: translateX(-100%);
+}
+
+.sidebar.show {
+  transform: translateX(0);
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.close-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
+}
+
+.menu-items {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px; /* Add margin between close button and menu items */
+}
+
+.menu-items li {
+  padding: 10px 0;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.menu-items a:hover {
+  color: #f0f0f0; /* Lighten text color on hover */
+}
+
+.dropdown-items {
+  list-style: none;
+  padding: 0;
+  padding-left: 20px; /* Indentation for the dropdown items */
+}
+
+.dropdown-items li {
+  padding: 6px 0;
+}
+
+.dropdown-items a {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 16px;
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.dropdown-items a:hover {
+  color: black; /* Change text color on hover */
+}
