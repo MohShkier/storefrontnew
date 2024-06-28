@@ -83,12 +83,9 @@ const SideMenu: React.FC<Swiperz2Props> = ({ itemsArray, category }) => {
             ))}
             <Divider className='pt-3' />
             {itemsArray.map((c) => {
-              const handle = c.handle ?? 'default';
               return (
                 <LocalizedClientLink key={handle} href={"/collections/" + handle}>
-                  <div className="flex flex-col-reverse items-center pt-7">
-                    <LogoCollections iconName={handle} />
-                  </div>
+                 <h1>{c.title}</h1>
                 </LocalizedClientLink>
               );
             })}
