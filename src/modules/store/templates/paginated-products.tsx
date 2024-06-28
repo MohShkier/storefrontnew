@@ -71,7 +71,7 @@ export default async function PaginatedProducts({
           )
         })}
       </ul>
-      {/* totalPages > 1 &&  <Pagination data-testid="product-pagination" page={page} totalPages={totalPages} />*/}
+      { totalPages > 1 &&  <Pagination data-testid="product-pagination" page={page} totalPages={totalPages} />}
     </>
   )
 }
