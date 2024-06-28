@@ -1,104 +1,133 @@
 "use client"
+import React, { useState } from 'react';
+import { XMark } from "@medusajs/icons";
+import LocalizedClientLink from "@modules/common/components/localized-client-link";
+import './SideMenu.css';
+import Divider from '@modules/common/components/divider';
+import { ProductCollectionWithPreviews, ProductPreviewType } from "types/global"
+import { ProductCategoryWithChildren } from "types/global"
 
-import { Popover, Transition } from "@headlessui/react"
-import { ArrowRightMini, XMark } from "@medusajs/icons"
-import { Region } from "@medusajs/medusa"
-import { Text, clx, useToggleState } from "@medusajs/ui"
-import { Fragment } from "react"
-import {useState} from "react"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import CountrySelect from "../country-select"
-import "./styles.css"
+import Collapsible from 'react-collapsible';
+import IconsSideMenu from './IconsForCategories';
+import LogoCollection from './LogoCollection';
+import LogoCollections from './LogoCollection';
+
 const SideMenuItems = {
   المحترف: "/",
   المتجر: "/store",
   الحساب: "/account",
   السلة: "/cart",
+};
+interface Swiperz2Props {
+  itemsArray: ProductCollectionWithPreviews[];
+  category: ProductCategoryWithChildren[];
 }
 
-const SideMenu = ({ regions }: { regions: Region[] | null }) => {
-  const toggleState = useToggleState()
+const SideMenu: React.FC<Swiperz2Props> = ({ itemsArray, category }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const openMenu = () => {
     setIsOpen(true);
     document.body.classList.add('menu-open');
     document.body.style.overflow = 'hidden';
   };
-  
+
   const closeMenu = () => {
     setIsOpen(false);
     document.body.classList.remove('menu-open');
     document.body.style.overflow = 'auto';
   };
-  
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <div className="h-full">
       <div className="flex items-center h-full">
-        <Popover className="h-full flex">
-          {({ open, close }) => (
-            <>
-              <div className="relative flex h-full">
-                <Popover.Button data-testid="nav-menu-button" className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-gray-600" onClick={openMenu}>
-                  <svg
-                    className="w-6 h-6 mr-2 text-gray-600"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                </Popover.Button>
-              </div>
+        <button onClick={openMenu} className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-gray-600">
+          <svg
+            className="w-6 h-6 mr-2 text-gray-600"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
 
-              <Transition
-                show={isOpen}
-                as={Fragment}
-                enter="transition ease-out duration-150"
-                enterFrom="opacity-0"
-                enterTo="opacity-100 backdrop-blur-2xl"
-                leave="transition ease-in duration-150"
-                leaveFrom="opacity-100 backdrop-blur-2xl"
-                leaveTo="opacity-0"
-              >
-                <Popover.Panel className="flex flex-col absolute !w-full pr-4 sm:pr-0 sm:w-1/3 2xl:w-1/4 sm:min-w-min h-[calc(100vh-1rem)] z-30 inset-x-0 text-sm text-gray-600 m-2 backdrop-blur-2xl">
-                  <div data-testid="nav-menu-popup" className="flex flex-col bg-white rounded-rounded justify-center p-6 !w-full">
-                    <div className="flex justify-end !w-full" id="xmark">
-                      <button data-testid="close-menu-button" onClick={() => { close(); closeMenu(); }}>
-                        <XMark className="w-6 h-6 text-gray-600 hover:text-gray-800" />
-                      </button>
-                    </div>
-                    <ul className="flex flex-col gap-4 items-start mt-6">
-                      {Object.entries(SideMenuItems).map(([name, href]) => {
-                        return (
-                          <li key={name}>
-                            <LocalizedClientLink
-                              href={href}
-                              className="text-lg leading-8 hover:text-gray-800"
-                              onClick={() => { close(); closeMenu(); }}
-                              data-testid={`${name.toLowerCase()}-link`}
-                            >
-                              {name}
-                            </LocalizedClientLink>
-                          </li>
-                        )
-                      })}
-                    </ul>
+      <div className={`sidebar ${isOpen ? 'show' : ''}`}>
+        <div className="sidebar-content">
+          <button className="close-btn" onClick={closeMenu}>
+            <XMark className="w-6 h-6 text-gray-600 hover:text-gray-800" />
+          </button>
+          <ul className="menu-items text-right">
+            {Object.entries(SideMenuItems).map(([name, href]) => (
+              <li key={name}>
+                <LocalizedClientLink
+                  href={href}
+                  className="text-lg leading-8 hover:!text-red-500 !text-black"
+                  onClick={closeMenu}
+                >
+                  {name}
+                </LocalizedClientLink>
+              </li>
+            ))}
+            <Divider className='pt-3' />
+            {itemsArray.map((c) => {
+              const handle = c.handle ?? 'default';
+              return (
+                <LocalizedClientLink key={handle} href={"/collections/" + handle}>
+                  <div className="flex flex-col-reverse items-center pt-7">
+                    <LogoCollections iconName={handle} />
                   </div>
-                </Popover.Panel>
-              </Transition>
-            </>
-          )}
-        </Popover>
+                </LocalizedClientLink>
+              );
+            })}
+            <Divider />
+            <div className='pt-6'>
+              {category.map((c) => (
+                <>
+                  {c.category_children.length >= 1 && (
+                    <div className='!text-center !me-7'>
+                      {c.category_children.map((c2) => (
+                        <LocalizedClientLink
+                          key={c2.handle}
+                          href={`/categories/${c2.handle}`}
+                          className='hover:text-red-500 hover:cursor-pointer !text-black'
+                        >
+                          <div className='flex flex-row gap-3 pt-5 '>
+                            <IconsSideMenu iconName={c2.handle} />
+                            <h1 className='hover:text-red-500 hover:cursor-pointer '>{c2.name}</h1>
+                          </div>
+                          <Divider className='pt-3'/>
+                        </LocalizedClientLink>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ))}
+              {category.map((c) => (
+                <>
+                  <div className='flex justify-center !text-center'>
+                    {(c.category_children.length < 1 && !c.parent_category) && <h1 className='hover:text-red-500 hover:cursor-pointer pt-3'>{c.name}</h1>}
+                  </div>
+                </>
+              ))}
+            </div>
+          </ul>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SideMenu
+export default SideMenu;
