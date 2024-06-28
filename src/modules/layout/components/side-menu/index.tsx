@@ -84,7 +84,7 @@ const SideMenu: React.FC<Swiperz2Props> = ({ itemsArray, category }) => {
             <Divider className='pt-3' />
             {itemsArray.map((c) => {
               return (
-                <LocalizedClientLink key={handle} href={"/collections/" + handle}>
+                <LocalizedClientLink key={c.handle} href={"/collections/" + c.handle}>
                  <h1>{c.title}</h1>
                 </LocalizedClientLink>
               );
