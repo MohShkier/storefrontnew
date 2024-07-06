@@ -11,6 +11,7 @@ import Collapsible from 'react-collapsible';
 import IconsSideMenu from './IconsForCategories';
 import LogoCollection from './LogoCollection';
 import LogoCollections from './LogoCollection';
+import CartButton from '../cart-button';
 
 const SideMenuItems = {
   المحترف: "/",
@@ -67,10 +68,55 @@ const SideMenu: React.FC<Swiperz2Props> = ({ itemsArray, category }) => {
       <div className={`sidebar ${isOpen ? 'show' : ''}`}>
         <div className="sidebar-content">
           <button className="close-btn" onClick={closeMenu}>
-            <XMark className="w-6 h-6 text-gray-600 hover:text-gray-800" />
+            <XMark className="w-6 h-6 text-gray-600 hover:text-red-500" />
           </button>
+          {process.env.FEATURE_SEARCH_ENABLED && (
+                    <LocalizedClientLink
+                      className="text-gray-800 text-xl font-semibold hover:text-orange-500 -5 flex justify-center lg:hidden pt-7"
+                      href="/search"
+                      scroll={false}
+                      data-testid="nav-search-link"
+                    >
+
+                      <form className="!max-w-3xl mx-auto ">
+                        <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
+                          Search
+                        </label>
+                        <div className="relative">
+                          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg
+                              className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                              />
+                            </svg>
+                          </div>
+                          <input
+                            type="search"
+                            id="default-search"
+                            className="block !w-[12 rem] p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="ما الذي تبحث عنه ؟"
+                            required
+                          />
+                        
+                        </div>
+                      </form>
+                    </LocalizedClientLink>
+                  )}
+                    <Divider className='!pt-5'/>
+                  
           <ul className="menu-items text-right">
             {Object.entries(SideMenuItems).map(([name, href]) => (
+              <>
               <li key={name}>
                 <LocalizedClientLink
                   href={href}
@@ -80,19 +126,21 @@ const SideMenu: React.FC<Swiperz2Props> = ({ itemsArray, category }) => {
                   {name}
                 </LocalizedClientLink>
               </li>
+             
+              </>
             ))}
+                    <Divider className=''/>
 
             {itemsArray.map((c) => {
               return (
                 <LocalizedClientLink key={c.handle} href={"/collections/" + c.handle} className='hover:!text-red-500'>
-                  <div>
+                  <div className=" items-center ">
                     <h1 className='pt-3 pb-3 text-center'>{c.title}</h1>
                     <Divider className=''/>
                   </div>
                 </LocalizedClientLink>
               );
             })}
-  
             <div className='pt-6'>
               {category.map((c) => (
                 <>
