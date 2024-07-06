@@ -1,7 +1,7 @@
 /* src/SideMenu.css */
 .sidebar {
   height: 100%;
-  width: 250px;
+  width: 280px;
   position: fixed;
   z-index: 1;
   top: 0;
