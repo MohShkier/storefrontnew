@@ -33,7 +33,7 @@ const Hits = ({
         }
       )}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 gap-2 mb-4 xl:grid-cols-3">
         {hits.slice(0, 6).map((hit, index) => (
           <li
             key={index}
