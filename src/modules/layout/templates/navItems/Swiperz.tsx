@@ -66,14 +66,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
                         loader={({ src }) => src}
                     />
                 </SwiperSlide>
-                <SwiperSlide className='custom-swiper-slide'>
-                    <Image
-                        alt=""
-                        className='custom-swiper-slide-img rounded-3xl'
-                        src={swiper12}
-                        loader={({ src }) => src}
-                    />
-                </SwiperSlide>
+     
                 <SwiperSlide className='custom-swiper-slide'>
                     <Image
                         alt=""
@@ -90,14 +83,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
                         loader={({ src }) => src}
                     />
                 </SwiperSlide>
-                <SwiperSlide className='custom-swiper-slide'>
-                    <Image
-                        alt=""
-                        className='custom-swiper-slide-img rounded-3xl'
-                        src={swiper14}
-                        loader={({ src }) => src}
-                    />
-                </SwiperSlide>
+
 
                 <div className="custom-swiper-pagination1"></div>
             </Swiper>
