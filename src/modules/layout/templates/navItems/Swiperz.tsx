@@ -29,7 +29,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
     return (
         <>
             <Swiper
-                className={`${classAdded} custom-swiper    mt-10 rounded-3xl small:max-lg:!h-[10rem]`}
+                className={`${classAdded} custom-swiper  !mt-[5rem] rounded-3xl small:max-lg:!h-[10rem]`}
                 spaceBetween={100}
                 autoplay={{
                     delay: 2500,
