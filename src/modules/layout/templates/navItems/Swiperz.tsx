@@ -50,14 +50,7 @@ const Swiperz: React.FC<SwiperProps> = ({ classAdded }) => {
                         loader={({ src }) => src}
                     />
                 </SwiperSlide>
-                <SwiperSlide className='custom-swiper-slide'>
-                    <Image
-                        alt=""
-                        className='custom-swiper-slide-img rounded-3xl'
-                        src={swiper10}
-                        loader={({ src }) => src}
-                    />
-                </SwiperSlide>
+
                 <SwiperSlide className='custom-swiper-slide'>
                     <Image
                         alt=""
