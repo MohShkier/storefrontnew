@@ -466,7 +466,7 @@ export const getProductsList = cache(async function ({
   nextPage: number | null
   queryParams?: StoreGetProductsParams
 }> {
-  const limit = queryParams?.limit || 120
+  const limit = queryParams?.limit || 8
   const region = await getRegion(countryCode)
 
   if (!region) {
@@ -517,7 +517,7 @@ export const getProductsListWithSort = cache(
     nextPage: number | null
     queryParams?: StoreGetProductsParams
   }> {
-    const limit = queryParams?.limit || 120
+    const limit = queryParams?.limit || 8
 
     const {
       response: { products, count },
