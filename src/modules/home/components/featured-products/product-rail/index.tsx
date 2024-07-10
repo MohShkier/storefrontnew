@@ -145,9 +145,9 @@ export default function ProductRail({
       <div className="flex justify-between mb-8">
         <LocalizedClientLink href={`/collections/${collection.handle}`}>
         
-        <button type="button" className="focus:outline-none text-white  bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">عرض الكل</button>
+        <button type="button" className="focus:outline-none text-white 2xsmall:max-small:text-xs  bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">عرض الكل</button>
         </LocalizedClientLink>
-        <Text className="text-4xl !text-center font-semibold">{collection.title}</Text>
+        <Text className="text-4xl !text-center font-semibold 2xsmall:max-small:text-lg">{collection.title}</Text>
 
       </div>
       <ul className="grid 2xsmall:grid-cols-2 xsmall:grid-cols-3 small:max-large:grid-cols-3 large:grid-cols-4 large:gap-x-12 gap-x-6 gap-y-24 small:gap-y-12 xsmall:gap-y-12 2xsmall:gap-y-12 ">
