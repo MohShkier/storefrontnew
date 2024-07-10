@@ -2,9 +2,9 @@ import React from 'react';
 import Countdown, { CountdownRenderProps } from 'react-countdown';
 
 const MyCountdownComponent = () => {
-    const targetDate = new Date('2024-06-27T03:00:00+03:00');
+    const targetDate = new Date('2024-07-27T03:00:00+03:00');
 
-    const renderer = ({ days, hours, minutes, completed }: CountdownRenderProps) => {
+    const renderer = ({ days, hours, minutes,seconds, completed }: CountdownRenderProps) => {
         if (completed) {
             return <span className='hidden'>Countdown completed</span>;
         } else {
@@ -21,6 +21,10 @@ const MyCountdownComponent = () => {
                 <div className="text-center bg-red-200 py-2 px-4 rounded-lg ">
                   <div className="text-3xl font-bold text-red-600">{minutes}</div>
                   <div className="text-sm text-red-600">دقيقة</div>
+                </div>
+                     <div className="text-center bg-red-200 py-2 px-4 rounded-lg ">
+                  <div className="text-3xl font-bold text-red-600">{seconds}</div>
+                  <div className="text-sm text-red-600">ثانية</div>
                 </div>
               </div>
             );
