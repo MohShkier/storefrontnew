@@ -3,7 +3,8 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import { getCategoriesList, getCollectionsList } from "@lib/data"
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import Image from 'next/image';
+import Image from "next/image";
+import logo from "../../../../app/mainlogo.png"
 
 export default async function Footer() {
   const { collections } = await getCollectionsList(0, 6)
@@ -14,7 +15,7 @@ export default async function Footer() {
       <div className="content-container flex flex-col md:flex-row justify-between 2xsmall:max-md:items-center 2xsmall:max-md:justify-center items-start py-10 px-8 lg:px-16 gap-16">
         <div className="flex flex-col items-center lg:items-start space-y-4 lg:space-y-8">
           <LocalizedClientLink href="/" className="flex flex-col items-center lg:flex-col lg:items-center space-y-2 lg:space-y-0 space-x-2 text-xl font-bold text-gray-800 hover:text-orange-500">
-            <img src="https://i.ibb.co/WgRVZF7/output-onlinepngtools.png" alt="Logo" className="!w-[8rem] !h-[8rem] object-cover rounded-full lg:w-16 lg:h-16" />
+            <Image src={logo} alt=""/>
             <span>المحترف موبايل</span>
           </LocalizedClientLink>
 
