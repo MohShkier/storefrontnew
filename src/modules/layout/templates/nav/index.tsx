@@ -84,7 +84,7 @@ export default async function Nav() {
 
               <div className="flex items-center justify-center">
                 <LocalizedClientLink href="/" className="flex items-center">
-                  <Image src={logo} alt="logo" className="mr-2 h-[7rem]" />
+                  <Image src={logo} alt="logo" className="mr-2 h-[7rem] w-[7rem]"  />
                   <span className="text-gray-800 text-xl font-bold hover:text-orange-500"> المحترف موبايل</span>
                 </LocalizedClientLink>
               </div>
