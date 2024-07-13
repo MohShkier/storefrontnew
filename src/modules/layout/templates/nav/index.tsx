@@ -12,7 +12,7 @@ import shop from "../../../../app/shop.png"
 import shopCart from "../../../../app/shopping-cart.png"
 import user from "../../../../app/user.png"
 import home from "../../../../app/home-page.png"
-
+import logo from "../../../../app/mainlogo.png"
 import Image from "next/image";
 
 const getCollectionsWithProducts = cache(
@@ -84,7 +84,7 @@ export default async function Nav() {
 
               <div className="flex items-center justify-center">
                 <LocalizedClientLink href="/" className="flex items-center">
-                  <img src="https://i.ibb.co/WgRVZF7/output-onlinepngtools.png" alt="Logo"
+                  <Image src={logo} alt="Logo" className="mr-2 h-[7rem]" />
                     className="mr-2 h-[7rem]" />
                   <span className="text-gray-800 text-xl font-bold hover:text-orange-500"> المحترف موبايل</span>
                 </LocalizedClientLink>
