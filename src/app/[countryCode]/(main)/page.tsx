@@ -14,7 +14,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   title: "المحترف موبايل",
   description:
-    "المحترف موبايل ، اكبر معرض في شرق عمان للاجهزة الخلوية واكسسواراتها",
+    "المحترف موبايل ، اكبر معرض في شرق عمان للأجهزة الخلوية واكسسواراتها",
 }
 
 const getCollectionsWithProducts = cache(
