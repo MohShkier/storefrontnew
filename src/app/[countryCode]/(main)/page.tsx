@@ -12,9 +12,9 @@ import Swiperz from "@modules/layout/templates/navItems/Swiperz"
 import Swiperz2 from "@modules/layout/templates/nav/Swiperz2"
 import Image from 'next/image';
 export const metadata: Metadata = {
-  title: "Almohtaref Mobile",
+  title: "المحترف موبايل",
   description:
-    "",
+    "المحترف موبايل ، اكبر معرض في شرق عمان للاجهزة الخلوية واكسسواراتها",
 }
 
 const getCollectionsWithProducts = cache(
