@@ -144,8 +144,9 @@ export default function ProductRail({
     <div className="content-container py-12 small:py-24">
       <div className="flex justify-between mb-8">
         <LocalizedClientLink href={`/collections/${collection.handle}`}>
-        
-        <button type="button" className="focus:outline-none text-white 2xsmall:max-small:text-xs  bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">عرض الكل</button>
+         <button type="button" className="focus:outline-none text-white 2xsmall:max-small:text-xs  bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+          {"عرض الكل (" + collection.products.length + ")"}
+          </button>
         </LocalizedClientLink>
         <Text className="text-4xl !text-center font-semibold 2xsmall:max-small:text-lg">{collection.title}</Text>
 
