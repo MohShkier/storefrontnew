@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import Image from "next/image";
 import "./styles.css";
-
+import {Zoom} from "reactjs-image-zoom";
 SwiperCore.use([Navigation, Autoplay, Pagination, Scrollbar, A11y]);
 
 interface MedusaImage {
@@ -32,18 +32,26 @@ const ImageComponent: React.FC<Props> = ({ images }) => {
 
   return (
     <div className="flex flex-col items-center justify-center justify-items-center">
-      <div className="relative mb-4 custom-main-image-container">
-        <img
-          src={images[selectedImageIndex].url}
-          alt={`Product image ${selectedImageIndex + 1}`}
-          width={600}
-          height={600}
-          className="custom-rounded object-cover"
-        />
+      <div className="relative mb-4 custom-main-image-container ">
+
+
+
+
+      <Zoom 
+            maxwidth={700} // width of the box
+            repeat="repeat" // default is no-repeat
+            position="center" // cover
+            imagesrc={images[selectedImageIndex].url} // Image component | URL
+            size={200} // it is in percent
+            bgsize="cover" // background-size
+            cursor="zoom-in" // pointer
+            style={{ margin: "20px" }} // add custom style
+            className="custom-rounded object-cover"
+            />
       </div>
 
       <Swiper
-        className="custom-image-swiper !w-full !h-full hover:cursor-pointer"
+        className="custom-image-swiper !w-full !h-full"
         spaceBetween={10}
         loop={true}
         centeredSlides={true}
@@ -70,7 +78,7 @@ const ImageComponent: React.FC<Props> = ({ images }) => {
             <img
               src={image.url}
               alt={`Product image ${index + 1}`}
-              className="custom-rounded-thumb"
+              className="custom-rounded-thumb !w-full"
             />
           </SwiperSlide>
         ))}
