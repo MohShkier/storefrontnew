@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { NextRequest, NextResponse } from "next/server"
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
-const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "us"
+const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "jo"
 
 const regionMapCache = {
   regionMap: new Map<string, Region>(),
@@ -11,21 +11,22 @@ const regionMapCache = {
 }
 
 async function getRegionMap() {
+  console.log('Fetching region map...')
+  const start = Date.now()
   const { regionMap, regionMapUpdated } = regionMapCache
 
-  if (
-    !regionMap.keys().next().value ||
-    regionMapUpdated < Date.now() - 3600 * 1000
-  ) {
-    // Fetch regions from Medusa.
+  if (!regionMap.keys().next().value || regionMapUpdated < Date.now() - 3600 * 1000) {
+    console.log('Fetching regions from Medusa backend...')
     const response = await fetch(`${BACKEND_URL}/store/regions`)
     const { regions } = await response.json()
-
+    
+    const end = Date.now()
+    console.log(`Fetched regions in ${end - start} ms`)
+    
     if (!regions) {
       notFound()
     }
 
-    // Create a map of country codes to regions.
     regions.forEach((region: Region) => {
       region.countries.forEach((c) => {
         regionMapCache.regionMap.set(c.iso_2, region)
@@ -42,6 +43,8 @@ async function getCountryCode(
   request: NextRequest,
   regionMap: Map<string, Region | number>
 ) {
+  console.log('Getting country code...')
+  const start = Date.now()
   try {
     let countryCode
 
@@ -61,17 +64,18 @@ async function getCountryCode(
       countryCode = regionMap.keys().next().value
     }
 
+    const end = Date.now()
+    console.log(`Country code determined in ${end - start} ms`)
+
     return countryCode
   } catch (error) {
-    if (process.env.NODE_ENV === "development") {
-      console.error(
-        "Middleware.ts: Error getting the country code. Did you set up regions in your Medusa Admin and define a NEXT_PUBLIC_MEDUSA_BACKEND_URL environment variable?"
-      )
-    }
+    console.error("Middleware.ts: Error getting the country code.", error)
   }
 }
 
 export async function middleware(request: NextRequest) {
+  console.log('Middleware invoked...')
+  const start = Date.now()
   const searchParams = request.nextUrl.searchParams
   const isOnboarding = searchParams.get("onboarding") === "true"
   const cartId = searchParams.get("cart_id")
@@ -91,6 +95,7 @@ export async function middleware(request: NextRequest) {
     (!isOnboarding || onboardingCookie) &&
     (!cartId || cartIdCookie)
   ) {
+    console.log('Middleware completed (no redirect needed)')
     return NextResponse.next()
   }
 
@@ -117,6 +122,9 @@ export async function middleware(request: NextRequest) {
   if (isOnboarding) {
     response.cookies.set("_medusa_onboarding", "true", { maxAge: 60 * 60 * 24 })
   }
+
+  const end = Date.now()
+  console.log(`Middleware completed in ${end - start} ms`)
 
   return response
 }
