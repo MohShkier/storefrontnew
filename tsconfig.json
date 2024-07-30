@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext", // Changed to 'esnext' for modern JavaScript support
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["cypress"],
+    "types": ["cypress", "node"], // Included 'node' for Node.js types
     "baseUrl": "./src",
     "paths": {
       "swiper/*": ["node_modules/swiper/*"],
