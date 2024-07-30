@@ -17,13 +17,9 @@ async function getRegionMap() {
     !regionMap.keys().next().value ||
     regionMapUpdated < Date.now() - 3600 * 1000
   ) {
-    // Fetch regions from Medusa. We can't use the JS client here because middleware is running on Edge and the client needs a Node environment.
-    const { regions } = await fetch(`${BACKEND_URL}/store/regions`, {
-      next: {
-        revalidate: 3600,
-        tags: ["regions"],
-      },
-    }).then((res) => res.json())
+    // Fetch regions from Medusa.
+    const response = await fetch(`${BACKEND_URL}/store/regions`)
+    const { regions } = await response.json()
 
     if (!regions) {
       notFound()
@@ -42,11 +38,6 @@ async function getRegionMap() {
   return regionMapCache.regionMap
 }
 
-/**
- * Fetches regions from Medusa and sets the region cookie.
- * @param request
- * @param response
- */
 async function getCountryCode(
   request: NextRequest,
   regionMap: Map<string, Region | number>
@@ -80,9 +71,6 @@ async function getCountryCode(
   }
 }
 
-/**
- * Middleware to handle region selection and onboarding status.
- */
 export async function middleware(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
   const isOnboarding = searchParams.get("onboarding") === "true"
@@ -98,7 +86,6 @@ export async function middleware(request: NextRequest) {
   const urlHasCountryCode =
     countryCode && request.nextUrl.pathname.split("/")[1].includes(countryCode)
 
-  // check if one of the country codes is in the url
   if (
     urlHasCountryCode &&
     (!isOnboarding || onboardingCookie) &&
@@ -116,20 +103,17 @@ export async function middleware(request: NextRequest) {
 
   let response = NextResponse.redirect(redirectUrl, 307)
 
-  // If no country code is set, we redirect to the relevant region.
   if (!urlHasCountryCode && countryCode) {
     redirectUrl = `${request.nextUrl.origin}/${countryCode}${redirectPath}${queryString}`
     response = NextResponse.redirect(`${redirectUrl}`, 307)
   }
 
-  // If a cart_id is in the params, we set it as a cookie and redirect to the address step.
   if (cartId && !checkoutStep) {
     redirectUrl = `${redirectUrl}&step=address`
     response = NextResponse.redirect(`${redirectUrl}`, 307)
     response.cookies.set("_medusa_cart_id", cartId, { maxAge: 60 * 60 * 24 })
   }
 
-  // Set a cookie to indicate that we're onboarding. This is used to show the onboarding flow.
   if (isOnboarding) {
     response.cookies.set("_medusa_onboarding", "true", { maxAge: 60 * 60 * 24 })
   }
