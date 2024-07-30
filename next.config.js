@@ -27,14 +27,15 @@ const nextConfig = withStoreConfig({
       },
       {
         protocol: "https",
-        hostname:"mohtaref-bucket.s3.eu-north-1.amazonaws.com",
+        hostname: "mohtaref-bucket.s3.eu-north-1.amazonaws.com",
       },
     ],
+  },
+  experimental: {
+    runtime: 'nodejs', // Add this line to specify the Node.js runtime
   },
 });
 
 console.log("next.config.js", JSON.stringify(module.exports, null, 2));
 
 module.exports = nextConfig;
-
-
