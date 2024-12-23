@@ -1,14 +1,14 @@
-import { Text } from "@medusajs/ui"
-
-import { ProductPreviewType } from "types/global"
-
+// ProductPreview.tsx (Server-side)
 import { retrievePricedProductById } from "@lib/data"
 import { getProductPrice } from "@lib/util/get-product-price"
 import { Region } from "@medusajs/medusa"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
-import "./styles.css"
+import ProductPreviewClient from "./ProductPreviewClient" // Client-side component
+import { ProductPreviewType } from "types/global"
+
+
 export default async function ProductPreview({
   productPreview,
   isFeatured,
@@ -21,7 +21,7 @@ export default async function ProductPreview({
   const pricedProduct = await retrievePricedProductById({
     id: productPreview.id,
     regionId: region.id,
-  }).then((product) => product)
+  })
 
   if (!pricedProduct) {
     return null
@@ -33,31 +33,21 @@ export default async function ProductPreview({
   })
 
   return (
-
-
-    
-    <LocalizedClientLink
-      href={`/products/${productPreview.handle}`}
-      className="group"
-    >
-      <div data-testid="product-wrapper">
-        <Thumbnail
-          thumbnail={productPreview.thumbnail}
-          size="square"
-          isFeatured={isFeatured}
-        />
-        <div className="flex flex-col mt-4  md:justify-between items-center">
-        <div className="">
-      <Text className="text-md md:text-compact-medium md:mr-4 font-bold text-center" data-testid="product-title">
-        {productPreview.title}
-      </Text>
-    </div>
-          <div className="flex items-center mt-2 md:mt-0">
-            {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
-          </div>
+    <div data-testid="product-wrapper">
+      <LocalizedClientLink href={`/products/${productPreview.handle}`} className="group">
+        <Thumbnail thumbnail={productPreview.thumbnail} size="square" isFeatured={isFeatured} />
+      </LocalizedClientLink>
+      <div className="flex flex-col mt-4 md:justify-between items-center">
+        <div>
+          <h2>{productPreview.title}</h2>
+        </div>
+        <div className="flex items-center mt-2 md:mt-0 text-center">
+          {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
         </div>
       </div>
-    </LocalizedClientLink>
 
+      {/* Pass the product and region to the client-side component */}
+      <ProductPreviewClient product={pricedProduct} region={region} />
+    </div>
   )
 }
