@@ -33,21 +33,23 @@ export default async function ProductPreview({
   })
 
   return (
-    <div data-testid="product-wrapper">
+    <div data-testid="product-wrapper ">
       <LocalizedClientLink href={`/products/${productPreview.handle}`} className="group">
-        <Thumbnail thumbnail={productPreview.thumbnail} size="square" isFeatured={isFeatured} />
+        <Thumbnail thumbnail={productPreview.thumbnail} size="square" isFeatured={isFeatured} className=""/>
+       
       </LocalizedClientLink>
+     
+         <ProductPreviewClient product={pricedProduct} region={region} />
       <div className="flex flex-col mt-4 md:justify-between items-center">
-        <div>
+        <div >
           <h2>{productPreview.title}</h2>
         </div>
-        <div className="flex items-center mt-2 md:mt-0 text-center">
+        <div className="flex items-center mt-2 md:mt-0 text-center gap-5">
           {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
         </div>
       </div>
 
       {/* Pass the product and region to the client-side component */}
-      <ProductPreviewClient product={pricedProduct} region={region} />
     </div>
   )
 }
