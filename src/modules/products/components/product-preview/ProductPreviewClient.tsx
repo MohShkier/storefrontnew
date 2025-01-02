@@ -4,6 +4,7 @@
 import React, { useState } from "react"
 import ProductActions from "@modules/products/components/product-actions"
 import Modal from "./Modal"
+import { IoMdCart } from "react-icons/io"
 
 interface ProductPreviewClientProps {
   product: any
