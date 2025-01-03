@@ -79,7 +79,7 @@ export default async function Home({
       <Hero />
       <div className="py-12">
   
-<Swiperz2 classAdded="" itemsArray={filteredCollections}/>
+
 
         <ul className="flex flex-col gap-x-6 test"  >
           
