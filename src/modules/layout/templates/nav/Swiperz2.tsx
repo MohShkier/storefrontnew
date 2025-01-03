@@ -16,17 +16,20 @@ import PreviewPrice from "../../../products/components/product-preview/price"
 import { ProductCollectionWithPreviews, ProductPreviewType } from "types/global"
 import DiscountRepository from '@medusajs/medusa/dist/repositories/discount';
 import MyCountdownComponent from './test';
+import ProductPreviewClient from '@modules/products/components/product-preview/ProductPreviewClient';
+import { Region } from '@medusajs/medusa';
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 interface Swiperz2Props {
   classAdded: string;
-  itemsArray: ProductCollectionWithPreviews[];
+  itemsArray: any;
+  region:Region;
 }
 
-const Swiperz2: React.FC<Swiperz2Props> = ({ classAdded, itemsArray }) => {
+const Swiperz2: React.FC<Swiperz2Props> = ({ classAdded, itemsArray,region}) => {
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     // Check if itemsArray is not empty to determine loading state
     if (itemsArray.length > 0) {
@@ -61,12 +64,11 @@ const Swiperz2: React.FC<Swiperz2Props> = ({ classAdded, itemsArray }) => {
             1536: { slidesPerView: 3 },
           }}
         >
-          {itemsArray.map((item, index) => (
-
-            <div key={index} >
-              {item.products.map((singleItem, productIndex) => (
+          
+              {itemsArray.map((singleItem:any, productIndex:number) => (
                 <>
-                  {singleItem.price?.price_type === "sale" && <SwiperSlide key={productIndex}>
+                  {
+                  singleItem.price?.price_type === "sale" && <SwiperSlide key={productIndex}>
 
                     <div className="relative mb-[3rem] 2xsmall:max-small:mb-8">
                       <div className="absolute  left-1/2 transform -translate-x-1/2 bg-red-500 text-white py-1 px-2 rounded-md z-10 w-[6rem] text-xl font-bold 2xsmall:max-small:w-[4rem] 2xsmall:max-small:text-xs 2xsmall:max-small:mb-2">
@@ -90,13 +92,13 @@ const Swiperz2: React.FC<Swiperz2Props> = ({ classAdded, itemsArray }) => {
                         </div>
                       </div>
                     </LocalizedClientLink>
+                    <ProductPreviewClient product={singleItem} region={region}/>
                   </SwiperSlide>}
 
 
                 </>
               ))}
-            </div>
-          ))}
+           
         </Swiper>
       </div>
     </>
@@ -104,4 +106,3 @@ const Swiperz2: React.FC<Swiperz2Props> = ({ classAdded, itemsArray }) => {
 }
 
 export default Swiperz2;
-
