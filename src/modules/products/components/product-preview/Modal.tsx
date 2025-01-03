@@ -18,7 +18,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, product, region }) => {
           <div className="flex flex-col gap-4">
           <h2 className="text-center">اضف الى السلة</h2>
           <hr></hr>
-          <ProductActions product={product} region={region} />
+          <ProductActions product={product} region={region} onClose={onClose}/>
           </div>
           <button onClick={onClose}>Close</button>
         </div>
