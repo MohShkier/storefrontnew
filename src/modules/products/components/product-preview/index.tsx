@@ -1,4 +1,3 @@
-// ProductPreview.tsx (Server-side)
 import { retrievePricedProductById } from "@lib/data"
 import { getProductPrice } from "@lib/util/get-product-price"
 import { Region } from "@medusajs/medusa"
@@ -7,7 +6,6 @@ import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
 import ProductPreviewClient from "./ProductPreviewClient" // Client-side component
 import { ProductPreviewType } from "types/global"
-
 
 export default async function ProductPreview({
   productPreview,
@@ -36,7 +34,6 @@ export default async function ProductPreview({
     <div data-testid="product-wrapper ">
       <LocalizedClientLink href={`/products/${productPreview.handle}`} className="group">
         <Thumbnail thumbnail={productPreview.thumbnail} size="square" isFeatured={isFeatured} className=""/>
-       
       </LocalizedClientLink>
      
          <ProductPreviewClient product={pricedProduct} region={region} />
