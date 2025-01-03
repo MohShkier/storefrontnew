@@ -1,5 +1,4 @@
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
-
 import { formatAmount } from "@lib/util/prices"
 import { RegionInfo } from "types/global"
 import { CalculatedVariant } from "types/medusa"
@@ -17,23 +16,39 @@ export function getProductPrice({
     throw new Error("No product provided")
   }
 
+  // Helper function to calculate the discount percentage
   const getPercentageDiff = (original: number, calculated: number) => {
     const diff = original - calculated
-    const decrease = (diff / original)
-
+    const decrease = diff / original
     return decrease.toFixed()
   }
 
+  // Safely pick the variants array
+  //  - If product.pricedDetails?.variants exists, use it
+  //  - otherwise, use product.variants
+  //  - default to an empty array if neither is defined
+  const getVariants = () => {
+    return (
+      (product as any)?.pricedDetails?.variants ?? // pricedDetails.variants might exist
+      product.variants ?? // fallback
+      []
+    ) as CalculatedVariant[]
+  }
+
   const cheapestPrice = () => {
-    if (!product || !product.variants?.length || !region) {
+    if (!product || !region) {
       return null
     }
 
-    const variants = product.variants as unknown as CalculatedVariant[]
+    const variants = getVariants()
+    if (!variants.length) {
+      return null
+    }
 
-    const cheapestVariant = variants.reduce((prev, curr) => {
-      return prev.calculated_price < curr.calculated_price ? prev : curr
-    })
+    // Find the variant with the lowest calculated_price
+    const cheapestVariant = variants.reduce((prev, curr) =>
+      prev.calculated_price < curr.calculated_price ? prev : curr
+    )
 
     return {
       calculated_price: formatAmount({
@@ -55,13 +70,19 @@ export function getProductPrice({
   }
 
   const variantPrice = () => {
-    if (!product || !variantId || !region) {
+    if (!product || !region || !variantId) {
       return null
     }
 
-    const variant = product.variants.find(
+    const variants = getVariants()
+    if (!variants.length) {
+      return null
+    }
+
+    // Safely find the matching variant
+    const variant = variants.find(
       (v) => v.id === variantId || v.sku === variantId
-    ) as unknown as CalculatedVariant
+    )
 
     if (!variant) {
       return null
