@@ -16,6 +16,7 @@ import {
 } from "@lib/data"
 import ProductTemplate from "@modules/products/templates"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import Swiperz2 from "@modules/layout/templates/nav/Swiperz2"
 
 type Props = {
   params: { countryCode: string; handle: string }
@@ -85,11 +86,10 @@ const getPricedProductByHandle = async (handle: string, region: Region) => {
     id: product.id,
     regionId: region.id,
   })
-
   return pricedProduct
 }
 
-export  async function ProductPage({ params }: Props) {
+export async function ProductPage({ params }: Props) {
   const region = await getRegion(params.countryCode)
 
   if (!region) {
@@ -97,7 +97,7 @@ export  async function ProductPage({ params }: Props) {
   }
 
   const pricedProduct = await getPricedProductByHandle(params.handle, region)
-
+ 
   if (!pricedProduct) {
     notFound()
   }
@@ -111,23 +111,7 @@ export  async function ProductPage({ params }: Props) {
   )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export default function ProductRail({
+export default async function ProductRail({
   collection,
   region,
 }: {
@@ -135,36 +119,40 @@ export default function ProductRail({
   region: Region
 }) {
   const { products } = collection
-
   if (!products) {
     return null
   }
 
+  
+
   return (
-    <div className="content-container py-12 small:py-24">
-      <div className="flex justify-between mb-8">
-        <LocalizedClientLink href={`/collections/${collection.handle}`}>
-         <button type="button" className="focus:outline-none text-white 2xsmall:max-small:text-xs  bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-          عرض الكل
-          </button>
-        </LocalizedClientLink>
-        <Text className="text-4xl !text-center font-semibold 2xsmall:max-small:text-lg">{collection.title}</Text>
+    <>
+      <div className="content-container my-12 small:py-24 bg-gray-100 rounded-3xl">
+        <div className="flex justify-between mb-8">
+          <LocalizedClientLink href={`/collections/${collection.handle}`}>
+
+            <button type="button" className="focus:outline-none text-white 2xsmall:max-small:text-xs  bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+              {"عرض الكل (" + collection.products.length + ")"}
+            </button>
+          </LocalizedClientLink>
+          <Text className="text-4xl !text-center font-semibold 2xsmall:max-small:text-lg">{collection.title}</Text>
+
+        </div>
+        <ul className="grid 2xsmall:grid-cols-2 xsmall:grid-cols-3 small:max-large:grid-cols-3 large:grid-cols-4 large:gap-x-12 gap-x-6 gap-y-24 small:gap-y-12 xsmall:gap-y-12 2xsmall:gap-y-12 ">
+          {products &&
+            products.map((product) => (
+              <li key={product.id} >
+                <ProductPreview
+                  productPreview={product}
+                  region={region}
+                  isFeatured
+
+                />
+              </li>
+            ))}
+        </ul>
 
       </div>
-      <ul className="grid 2xsmall:grid-cols-2 xsmall:grid-cols-3 small:max-large:grid-cols-3 large:grid-cols-4 large:gap-x-12 gap-x-6 gap-y-24 small:gap-y-12 xsmall:gap-y-12 2xsmall:gap-y-12 ">
-        {products &&
-          products.map((product) => (
-            <li key={product.id} >
-              <ProductPreview
-                productPreview={product}
-                region={region}
-                isFeatured
-                
-              />
-            </li>
-          ))}
-      </ul>
-      
-    </div>
+    </>
   )
 }
