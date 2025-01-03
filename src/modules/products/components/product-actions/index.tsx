@@ -20,6 +20,7 @@ import ProductPrice from "../product-price"
 type ProductActionsProps = {
   product: PricedProduct
   region: Region
+  onClose?: () => void
 }
 
 export type PriceType = {
@@ -32,13 +33,14 @@ export type PriceType = {
 export default function ProductActions({
   product,
   region,
+  onClose,
 }: ProductActionsProps) {
   const [options, setOptions] = useState<Record<string, string>>({})
   const [isAdding, setIsAdding] = useState(false)
 
   const countryCode = useParams().countryCode as string
 
-  const variants = product.variants
+  const variants = (product as any).pricedDetails?.variants || (product as PricedProduct).variants;
 
   // initialize the option state
   useEffect(() => {
@@ -80,7 +82,7 @@ export default function ProductActions({
       }
     }
 
-    return variants.find((v) => v.id === variantId)
+    return variants.find((v:any) => v.id === variantId)
   }, [options, variantRecord, variants])
 
   // if product only has one variant, then select it
@@ -127,8 +129,8 @@ export default function ProductActions({
     // Display the toast notification
     toast(
       <div>
-        تم اضافة المنتج الى سلتك ! <br />
-        <a href="/cart" target="_blank" rel="noopener noreferrer" className="text-red-500">إذهب إلى السلة</a>
+        Product added to cart! <br />
+        <a href="/cart" target="_blank" rel="noopener noreferrer" className="text-red-500">Go to cart</a>
       </div>,
       {
         position: "top-right",
@@ -142,47 +144,73 @@ export default function ProductActions({
     );
   }
 
+
+
+  const productVariants = 
+  (product as any)?.pricedDetails?.variants 
+    ? (product as any).pricedDetails.variants 
+    : (product as PricedProduct).variants;
+
+const productOptions =
+  (product as any)?.pricedDetails?.options
+    ? (product as any).pricedDetails.options
+    : (product as PricedProduct).options;
+
+
+
   return (
     <>
       <div className="flex flex-col gap-y-2" ref={actionsRef}>
         <div>
-          {product.variants.length > 1 && (
-            <div className="flex flex-col gap-y-4">
-              {(product.options || []).map((option) => {
-                return (
-                  <div key={option.id}>
-                    <OptionSelect
-                      option={option}
-                      current={options[option.id]}
-                      updateOption={updateOptions}
-                      title={option.title}
-                      data-testid="product-options"
-                    />
-                  </div>
-                )
-              })}
-              <Divider />
-            </div>
-          )}
+        {(productVariants?.length ?? 0) > 1 && (
+  <div className="flex flex-col gap-y-4">
+    {(productOptions ?? []).map((option: any) => {
+      return (
+        <div key={option.id}>
+          <OptionSelect
+            option={option}
+            current={options[option.id]}
+            updateOption={updateOptions}
+            title={option.title}
+            data-testid="product-options"
+          />
+        </div>
+      )
+    })}
+    <Divider />
+  </div>
+)}
         </div>
 
         <ProductPrice product={product} variant={variant} region={region} />
 
         <Button
-          onClick={handleAddToCart}
-          disabled={!inStock || !variant}
-          variant="primary"
-          className="w-full h-10"
-          isLoading={isAdding}
-          data-testid="add-product-button"
-        >
-          {!variant
-            ? "اختر المواصفات"
-            : !inStock
-            ? "نفذ من المخزون"
-            : "اضافة الى السلة"}
-        </Button>
-        <MobileActions
+  onClick={async () => {
+    try {
+      await handleAddToCart(); // Wait for handleAddToCart to finish
+      
+      // Wait for 2 seconds
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      
+      onClose?.(); // Call onClose if it's defined
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+    }
+  }}
+  disabled={!inStock || !variant}
+  variant="primary"
+  className="w-full h-10"
+  isLoading={isAdding}
+  data-testid="add-product-button"
+>
+  {!variant
+    ? "اختر المواصفات"
+    : !inStock
+    ? "نفذ من المخزون"
+    : "اضافة الى السلة"}
+</Button>
+
+{/*<MobileActions
           product={product}
           variant={variant}
           region={region}
@@ -192,8 +220,10 @@ export default function ProductActions({
           handleAddToCart={handleAddToCart}
           isAdding={isAdding}
           show={!inView}
-        />
-      <ToastContainer />
+        /> */}
+
+  
+        <ToastContainer />
       </div>
     </>
   )
