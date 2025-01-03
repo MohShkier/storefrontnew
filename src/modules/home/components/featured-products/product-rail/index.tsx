@@ -127,7 +127,7 @@ export default async function ProductRail({
 
   return (
     <>
-      <div className="content-container my-12 small:py-24 bg-gray-100 rounded-3xl">
+      <div className="content-container my-12 ">
         <div className="flex justify-between mb-8">
           <LocalizedClientLink href={`/collections/${collection.handle}`}>
 
