@@ -52,7 +52,7 @@ const Swiperz2: React.FC<Swiperz2Props> = ({ classAdded, itemsArray,region}) => 
           centerInsufficientSlides={true}
           
           centeredSlidesBounds={true}
-          autoplay={{ delay: 2500, disableOnInteraction: true }}
+          autoplay={false}
           navigation
           breakpoints={{
             310: { slidesPerView: 1 },
