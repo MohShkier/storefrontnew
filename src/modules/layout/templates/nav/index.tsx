@@ -153,22 +153,13 @@ export default async function Nav() {
                   <Image src={shop} alt="" width={30} height={30}/>
 
                   </LocalizedClientLink>
-
-
-                  <Suspense
-                    fallback={
-
-                      <LocalizedClientLink
+                  <LocalizedClientLink
                         className="hover:text-ui-fg-base flex gap-2 text-gray-800 text-xl font-semibold hover:text-orange-500"
                         href="/cart"
                         data-testid="nav-cart-link"
                       >
                     <Image src={shopCart} alt="" width={30} height={30}/>
                     </LocalizedClientLink>
-                    }
-                  >
-                    <Image src={shopCart} alt="" width={30} height={30}/>
-                    </Suspense>
                 </div>
                 <div className=" flex-1 basis-0 h-full  items-center">
                   <div className="h-full">
@@ -182,7 +173,7 @@ export default async function Nav() {
 
 
           </nav>
-        </div>
+        </div> 
 
 
       </>
