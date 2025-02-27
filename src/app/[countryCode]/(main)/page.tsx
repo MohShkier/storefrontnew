@@ -11,6 +11,9 @@ import { useProductCategory } from "medusa-react"
 import Swiperz from "@modules/layout/templates/navItems/Swiperz"
 import Swiperz2 from "@modules/layout/templates/nav/Swiperz2"
 import Image from 'next/image';
+import Head from 'next/head';
+import Logo from "../../mainlogo.png";
+
 export const metadata: Metadata = {
   title: "المحترف موبايل",
   description:
@@ -75,6 +78,23 @@ export default async function Home({
 
   return (
     <>
+       <Head>
+        <title>المحترف موبايل</title>
+        <meta name="description" content={"المحترف موبايل ، اكبر معرض في شرق عمان للأجهزة الخلوية واكسسواراتها "} />
+        
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content={"المحترف موبايل"} />
+        <meta property="og:description" content={"المحترف موبايل ، اكبر معرض في شرق عمان للأجهزة الخلوية واكسسواراتها "} />
+        <meta property="og:image" content={Logo} />
+        <meta property="og:url" content={`https://mohtaref.pro/jo/} />
+        <meta property="og:type" content="product" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={"المحترف موبايل"} />
+        <meta name="twitter:description" content={"المحترف موبايل ، اكبر معرض في شرق عمان للأجهزة الخلوية واكسسواراتها "} />
+        <meta name="twitter:image" content={Logo} />
+      </Head>
                 <Swiperz classAdded=""/>
       <Hero />
       <div className="py-12">
